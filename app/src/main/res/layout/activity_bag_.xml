@@ -7,10 +7,20 @@
     android:background="@drawable/bag"
     tools:context=".bag_Activity">
 
-    <Button
+    <TextView
         android:id="@+id/btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FUCK"/>
+        android:text="Your Bag"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text = "Your Gold: "
+        android:gravity="bottom"
+
+        />
 
 </RelativeLayout>
