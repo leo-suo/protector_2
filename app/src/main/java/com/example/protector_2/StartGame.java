@@ -13,6 +13,7 @@ public class StartGame extends Activity {
     GameView gameView;
     public String map_info;
 
+    //add comment
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
