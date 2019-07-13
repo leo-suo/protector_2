@@ -47,7 +47,7 @@ public class GameView extends View{
 
     boolean gameStat = false;
 
-    Button tower_1, tower_2, tower_3;
+    Button tower_1, tower_2, tower_3, tower_4, tower_5;
 
 
 
