@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
-                        bag_Activity.class);
+                        shop_Activity.class);
                 startActivity(intent);
 
             }
