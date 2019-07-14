@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
+
+
 public class StartGame extends Activity {
     GameView gameView;
     public String map_info;
@@ -77,4 +79,7 @@ public class StartGame extends Activity {
         }
         map_info = sbuffer.toString();
     }
+
+
+
 }
