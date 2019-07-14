@@ -26,6 +26,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        play = findViewById(R.id.play);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,
+                        StartGame.class);
+                startActivity(intent);
+
+            }
+        });
+
+
         bag = findViewById(R.id.bag);
         bag.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,12 +60,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void startGame(View view){
-        Intent intent = new Intent(this, StartGame.class);
-        startActivity(intent);
-        finish();
     }
 
 }
