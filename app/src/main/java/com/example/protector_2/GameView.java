@@ -45,7 +45,7 @@ public class GameView extends View{
     // map
     Bitmap [][] map;
 
-    boolean gameStat = false;
+    boolean gameStat = true;
 
     Button tower_1, tower_2, tower_3, tower_4, tower_5;
 
@@ -149,6 +149,7 @@ public class GameView extends View{
 
     // Get the touch event
 
+    /*
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -162,4 +163,5 @@ public class GameView extends View{
 
         return true;
     }
+    */
 }
