@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".Summon_Activity"></activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape">
@@ -21,8 +22,8 @@
         <activity
             android:name=".StartGame"
             android:screenOrientation="landscape" />
-        <activity android:name=".bag_Activity"></activity>
-        <activity android:name=".shop_Activity"></activity>
+        <activity android:name=".bag_Activity" />
+        <activity android:name=".shop_Activity" />
     </application>
 
 </manifest>
