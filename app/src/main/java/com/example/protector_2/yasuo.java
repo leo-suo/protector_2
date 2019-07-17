@@ -39,6 +39,15 @@ public class yasuo extends View {
 
     Bitmap[] yasuos; // Lets create a Bitmap array for the yasuo
 
+    // yasuo game information
+    int hp = 500;
+
+    public void be_attacked(int x){
+        hp = hp - x;
+
+
+    }
+
     public yasuo(Context context, int x, int y, Block[][] block, int order) {
         super(context);
         yasuoX = x;
@@ -90,6 +99,14 @@ public class yasuo extends View {
         } else if (yasuoFrame == 5) {
             yasuoFrame = 0;
         }
+    }
+
+    public int center_x(){
+        return yasuoX + blockSize / 2;
+    }
+
+    public int center_y(){
+        return  yasuoY + blockSize / 2;
     }
 
     public void check_ingame(){
@@ -205,5 +222,21 @@ public class yasuo extends View {
         }
 
         return 5;
+    }
+
+    public void notifyOberver(){
+        for(int i = 0; i < GameView.number_of_tower; i++){
+            //if(!is_dead()){ // if not dead, notify
+                GameView.tower[i].update(center_x(), center_y(), this);
+            //}
+        }
+    }
+
+    public boolean is_dead(){
+        if(hp > 0){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

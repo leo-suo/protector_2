@@ -27,4 +27,23 @@ public class Block {
             return false;
         }
     }
+
+    public boolean in_the_block(float point_x, float point_y){
+        if(point_x >= x &&
+        point_x < x + blockSize &&
+        point_y >= y &&
+        point_y < y + blockSize){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public int center_x(){
+        return x + blockSize / 2;
+    }
+
+    public int center_y(){
+        return  y + blockSize / 2;
+    }
 }

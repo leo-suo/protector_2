@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/tower_1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="tower_1" />
+
+    <Button
+        android:id="@+id/tower_2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/tower_1"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:text="tower_2" />
+
+    <Button
+        android:id="@+id/tower_3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/tower_2"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:text="tower_3" />
+
+    <Button
+        android:id="@+id/tower_4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/tower_3"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:text="tower_4" />
+
+    <Button
+        android:id="@+id/tower_5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/tower_4"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:text="tower_5" />
+
+    <Button
+        android:id="@+id/tower_6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/tower_5"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:text="tower_6" />
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_toLeftOf="@id/tower_1"
+        android:orientation="horizontal"></LinearLayout>>
+
+
+
+
+
+
+</RelativeLayout>

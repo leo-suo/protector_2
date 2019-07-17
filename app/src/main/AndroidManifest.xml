@@ -20,9 +20,13 @@
         </activity>
         <activity
             android:name=".StartGame"
-            android:screenOrientation="landscape" />
-        <activity android:name=".bag_Activity"></activity>
-        <activity android:name=".shop_Activity"></activity>
+            android:screenOrientation="landscape" ></activity>
+        <activity
+            android:name=".bag_Activity"
+            android:screenOrientation="landscape" ></activity>
+        <activity
+            android:name=".shop_Activity"
+            android:screenOrientation="landscape" ></activity>
     </application>
 
 </manifest>

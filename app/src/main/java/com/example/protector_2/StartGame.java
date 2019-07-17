@@ -1,8 +1,12 @@
 package com.example.protector_2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -12,9 +16,14 @@ import java.io.InputStreamReader;
 
 
 public class StartGame extends Activity {
-    GameView gameView;
-    public String map_info;
+    static public int mouse = 0;
 
+    View gameView;
+    public static String map_info;
+
+    Button but1, but2, but3, but4, but5, but6;
+
+    int which_map;
     //add comment
 
     @Override
@@ -22,12 +31,63 @@ public class StartGame extends Activity {
         super.onCreate(savedInstanceState);
         readfiles();
         System.out.println("-----onCreate-----");
+        setContentView(R.layout.activitiy_startgame);
+
+        // GameView
+        LinearLayout root = (LinearLayout)findViewById(R.id.root);
+        final GameView gv = new GameView(this);
+        root.addView(gv);
+
+        but1 = findViewById(R.id.tower_1);
+        but2 = findViewById(R.id.tower_2);
+        but3 = findViewById(R.id.tower_3);
+        but4 = findViewById(R.id.tower_4);
+        but5 = findViewById(R.id.tower_5);
+        but6 = findViewById(R.id.tower_6);
+
+        but1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mouse = 1;
+            }
+        });
+        but2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mouse = 2;
+            }
+        });
+        but3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mouse = 3;
+            }
+        });
+        but4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mouse = 4;
+            }
+        });
+        but5.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mouse = 5;
+            }
+        });
+        but6.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mouse = 6;
+            }
+        });
     }
     @Override
     protected void onStart() {
         super.onStart();
-        gameView = new GameView(this, map_info);
-        setContentView(gameView);
+        //gameView = findViewById(R.id.GameView);
+        //gameView = new GameView(this);
+        //setContentView(gameView);
         System.out.println("-----onStart-----");
     }
 
@@ -58,6 +118,7 @@ public class StartGame extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        GameView.number_of_tower = 0;
         System.out.println("-----onDestroy -----");
     }
 

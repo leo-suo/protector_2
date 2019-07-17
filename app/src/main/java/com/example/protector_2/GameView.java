@@ -6,21 +6,29 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
 import android.graphics.*;
 import android.widget.Button;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import java.util.Random;
+import java.util.jar.Attributes;
 
 public class GameView extends View{
+    int i = StartGame.mouse;
     public int worldWidth = 12;
     public int worldHeight = 6;
     public int blockSize = 100;
 
     public Block[][] block;
+
+    public static Tower[] tower;
 
     // enemy
     public yasuo yasuo_array[];
@@ -29,6 +37,9 @@ public class GameView extends View{
 
     int number_of_yasuo = 10;
     int which_yasuo_now = 0; // to make yasuo appear in different order
+
+    public static int number_of_tower = 0;
+    // the number of the tower we create
 
 
     Handler handler; // handler is required to schedule a runnable after some delay
@@ -40,21 +51,20 @@ public class GameView extends View{
     Point point;
     int dWith, dHeight;// Device width width and height respectively
     Rect rect;
-
+    Context context;
 
     // map
     Bitmap [][] map;
 
     boolean gameStat = true;
 
-    Button tower_1, tower_2, tower_3, tower_4, tower_5;
 
 
 
-    public GameView(Context context, String map_info){
+    public GameView(Context context){
         super(context);
-        this.map_info = map_info;
-
+        this.context = context;
+        this.map_info = StartGame.map_info;
         handler = new Handler();
         runnable = new Runnable() {
             @Override
@@ -99,6 +109,12 @@ public class GameView extends View{
 
 
         // Tower activity
+
+        tower = new Tower[worldWidth * worldHeight];
+    }
+
+    public GameView(Context context, AttributeSet set){
+        super(context, set);
     }
 
 
@@ -128,6 +144,7 @@ public class GameView extends View{
             //move
             for(int i = 0; i < number_of_yasuo; ++i){
                 yasuo_array[i].yasuo_move();
+                yasuo_array[i].notifyOberver();
             }
 
         }
@@ -136,9 +153,27 @@ public class GameView extends View{
 
         // we want to the bird to be displayed at the centre of the screen
         for(int i = 0; i < number_of_yasuo; ++i){
-            if(yasuo_array[i].ingame == 1){
+            if(yasuo_array[i].ingame == 1 && yasuo_array[i].hp > 0){
                 canvas.drawBitmap(yasuo_array[i].yasuos[yasuo_array[i].yasuoFrame], yasuo_array[i].yasuoX,
                         yasuo_array[i].yasuoY, null);
+            }
+        }
+
+        // draw tower
+        for(int i = 0; i < number_of_tower; ++i){
+            if(tower[i].ingame == 1){
+                Paint paint = new Paint();
+                canvas.drawBitmap(tower[i].bit_tower[tower[i].which_frame], tower[i].towerX,
+                        tower[i].towerY, null);
+                tower[i].get_which_draw();
+
+                if(tower[i].attacking == 1 ){
+                    canvas.drawLine(tower[i].center_x(),
+                            tower[i].center_y(),
+                            tower[i].who_i_attack.center_x(),
+                            tower[i].who_i_attack.center_y(),
+                            paint);
+                }
             }
         }
 
@@ -149,19 +184,31 @@ public class GameView extends View{
 
     // Get the touch event
 
-    /*
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        float f_x;
+        float f_y;
+
         int action = event.getAction();
         if(action == MotionEvent.ACTION_DOWN){
             // Here we want the bird to move up by some unit
             //velocity = -30;
-            gameStat = true;
+            f_x = event.getX();
+            f_y = event.getY();
+            for(int j = 0; j < worldHeight; j++){
+                for (int i = 0; i < worldWidth; i++){
+                    if(block[j][i].in_the_block(f_x, f_y)){
+                        if (StartGame.mouse == 1){
+                            Tower_Garen new_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                            tower[number_of_tower] = new_t;
+                            number_of_tower++;
+                        }
+                    }
+                }
+            }
+
         }
-
-
         return true;
     }
-    */
+
 }
