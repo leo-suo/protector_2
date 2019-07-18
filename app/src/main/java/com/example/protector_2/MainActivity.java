@@ -10,7 +10,7 @@ import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button play, bag, shop, item;
+    private Button play, bag, shop;
 
 
     @Override
