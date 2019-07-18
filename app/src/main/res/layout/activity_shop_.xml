@@ -48,30 +48,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <Button
             android:id="@+id/Back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:background="@android:color/holo_green_dark"
-            android:text="Summon"
-            android:onClick="onSummonClick"
-            app:layout_constraintBottom_toBottomOf="@+id/textView5"
-            app:layout_constraintEnd_toStartOf="@+id/Summon"
-            app:layout_constraintTop_toTopOf="@+id/textView5" />
+            android:layout_marginBottom="8dp"
+            android:onClick="onBackButtonClick"
+            android:text="Back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/Summon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_dark"
-            android:text="Back"
-            android:onClick="onBackButtonClick"
-            app:layout_constraintBottom_toBottomOf="@id/textView5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView5" />
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="onSummonClick"
+            android:text="Summon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/Back"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </android.support.constraint.ConstraintLayout>
 
@@ -103,8 +107,15 @@
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird1" />
 
+                    <TextView
+                        android:id="@+id/t1_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="cost: 10 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/bt_t1"
+                        android:id="@+id/t1_bt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Buy" />
@@ -124,8 +135,15 @@
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird2" />
 
+                    <TextView
+                        android:id="@+id/t2_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 20 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button19"
+                        android:id="@+id/t2_bt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Buy" />
@@ -145,8 +163,15 @@
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/tower" />
 
+                    <TextView
+                        android:id="@+id/t3_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 30 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button20"
+                        android:id="@+id/t3_bt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Buy" />
@@ -166,8 +191,15 @@
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird2" />
 
+                    <TextView
+                        android:id="@+id/t4_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 40 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button21"
+                        android:id="@+id/t4_bt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Buy" />
@@ -187,8 +219,15 @@
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird1" />
 
+                    <TextView
+                        android:id="@+id/t5_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 50 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button26"
+                        android:id="@+id/t5_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Buy" />
@@ -213,8 +252,15 @@
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird1" />
 
+                    <TextView
+                        android:id="@+id/t6_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 60 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button22"
+                        android:id="@+id/t6_bt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Buy" />
@@ -229,13 +275,20 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/t7_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird2" />
 
+                    <TextView
+                        android:id="@+id/t7_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 70 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button23"
+                        android:id="@+id/t7_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Buy" />
@@ -250,13 +303,20 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/imageButton5"
+                        android:id="@+id/t8-_mg"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird1" />
 
+                    <TextView
+                        android:id="@+id/t8_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 80 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button24"
+                        android:id="@+id/t8_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Buy" />
@@ -271,13 +331,20 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/imageButton6"
+                        android:id="@+id/t9_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird1" />
 
+                    <TextView
+                        android:id="@+id/t9_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 90 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button25"
+                        android:id="@+id/t9_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Buy" />
@@ -292,13 +359,20 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/imageButton8"
+                        android:id="@+id/t10_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird2" />
 
+                    <TextView
+                        android:id="@+id/t10_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 100 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button27"
+                        android:id="@+id/t10_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Buy" />
@@ -318,13 +392,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/t11_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird1" />
 
+                    <TextView
+                        android:id="@+id/t11_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 110 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/t11_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Button" />
@@ -339,13 +420,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/t12_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird1" />
 
+                    <TextView
+                        android:id="@+id/t12_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 120 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button2"
+                        android:id="@+id/t12_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Button" />
@@ -360,13 +448,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/t13_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/bird2" />
 
+                    <TextView
+                        android:id="@+id/t13_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 130 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button3"
+                        android:id="@+id/t13_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Button" />
@@ -382,13 +477,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView7"
+                        android:id="@+id/t14_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/garen_1" />
 
+                    <TextView
+                        android:id="@+id/t14_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 140 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button4"
+                        android:id="@+id/t14_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Button" />
@@ -403,13 +505,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/t15_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         app:srcCompat="@drawable/garen_2" />
 
+                    <TextView
+                        android:id="@+id/t15_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="cost: 150 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
                     <Button
-                        android:id="@+id/button5"
+                        android:id="@+id/t15_bt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Button" />
