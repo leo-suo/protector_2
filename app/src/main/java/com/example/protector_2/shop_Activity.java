@@ -12,6 +12,18 @@ import java.io.InputStreamReader;
 
 public class shop_Activity extends AppCompatActivity {
     public int gold_num;
+    public int[] tower_id = {R.id.t1_bt,R.id.t2_bt,R.id.t3_bt,R.id.t4_bt,R.id.t5_bt,R.id.t6_bt,R.id.t7_bt,
+            R.id.t8_bt,R.id.t9_bt,R.id.t10_bt,R.id.t11_bt,R.id.t12_bt,R.id.t13_bt,R.id.t14_bt,R.id.t15_bt};
+
+
+    public class tower{
+        int price;
+        int Rid;
+        public tower(int Pirce, int Rid){
+            this.price=Pirce;
+            this.Rid = Rid;
+        }
+    }
 
 
     @Override
@@ -21,6 +33,7 @@ public class shop_Activity extends AppCompatActivity {
         read_gold_files();
         TextView t = findViewById(R.id.Gold_text);
         t.setText("Gold :" +String.valueOf(gold_num));
+
     }
 
     public void onBackButtonClick(View View){
