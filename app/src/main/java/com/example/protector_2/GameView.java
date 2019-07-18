@@ -26,12 +26,12 @@ public class GameView extends View{
     public int worldHeight = 6;
     public int blockSize = 100;
 
-    public Block[][] block;
+    public static Block[][] block;
 
     public static Tower[] tower;
 
     // enemy
-    public yasuo yasuo_array[];
+    public Enemy yasuo_array[];
 
     public String map_info;
 
@@ -89,12 +89,32 @@ public class GameView extends View{
             }
         }
 
+
         // create yasuo class
-        yasuo_array = new yasuo[number_of_yasuo];
-        for (int i = 0; i < number_of_yasuo; ++i) {
+        yasuo_array = new Enemy[number_of_yasuo];
+        /*
+        for(int i = 0; i < 6; ++i) {
             yasuo_array[i] = new yasuo(context, 0, 0,  block, which_yasuo_now);
+            yasuo_array[i+1] = new Enemy_Chitu(context, 0, 0,  block, which_yasuo_now);
+            yasuo_array[i+2] = new Enemy_Darius(context, 0, 0,  block, which_yasuo_now);
+            yasuo_array[i+3] = new Enemy_Fiora(context, 0, 0,  block, which_yasuo_now);
+            yasuo_array[i+4] = new Enemy_Jinx(context, 0, 0,  block, which_yasuo_now);
+
             which_yasuo_now++;
         }
+        */
+        yasuo_array[0] = new yasuo(context, 0, 0,  block, 0);
+        yasuo_array[1] = new Enemy_Chitu(context, 0, 0,  block, 1);
+        yasuo_array[2] = new Enemy_Darius(context, 0, 0,  block, 2);
+        yasuo_array[3] = new Enemy_Fiora(context, 0, 0,  block, 3);
+        yasuo_array[4] = new Enemy_Jinx(context, 0, 0,  block, 4);
+        yasuo_array[5] = new Enemy_Chitu(context, 0, 0,  block, 5);
+        yasuo_array[6] = new Enemy_Lee(context, 0, 0,  block, 6);
+        yasuo_array[7] = new Enemy_Mordekaiser(context, 0, 0,  block, 7);
+        yasuo_array[8] = new Enemy_Mordekaiser(context, 0, 0,  block, 8);
+        yasuo_array[9] = new Enemy_Mordekaiser(context, 0, 0,  block, 9);
+
+
 
         // bird
         background = BitmapFactory.decodeResource(getResources(), R.drawable.background);
@@ -200,6 +220,31 @@ public class GameView extends View{
                     if(block[j][i].in_the_block(f_x, f_y)){
                         if (StartGame.mouse == 1){
                             Tower_Garen new_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                            tower[number_of_tower] = new_t;
+                            number_of_tower++;
+                        }
+                        if (StartGame.mouse == 2){
+                            Tower_Diana new_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
+                            tower[number_of_tower] = new_t;
+                            number_of_tower++;
+                        }
+                        if (StartGame.mouse == 3){
+                            Tower_Karthus new_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
+                            tower[number_of_tower] = new_t;
+                            number_of_tower++;
+                        }
+                        if (StartGame.mouse == 4){
+                            Tower_Mord new_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
+                            tower[number_of_tower] = new_t;
+                            number_of_tower++;
+                        }
+                        if (StartGame.mouse == 5){
+                            Tower_Kassadin new_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
+                            tower[number_of_tower] = new_t;
+                            number_of_tower++;
+                        }
+                        if (StartGame.mouse == 6){
+                            Tower_Tryndamere new_t = new Tower_Tryndamere( context, block, block[j][i].x, block[j][i].y);
                             tower[number_of_tower] = new_t;
                             number_of_tower++;
                         }

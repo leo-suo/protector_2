@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
 
-public class Tower extends View{
+abstract public class Tower extends View{
     // map information
     public int worldWidth = 12;
     public int worldHeight = 6;
@@ -15,7 +15,7 @@ public class Tower extends View{
     Bitmap[] bit_tower;
 
     public int attacking = 0;
-    public yasuo who_i_attack;
+    public Enemy who_i_attack;
 
     public int kind = 0;
     // if kind = 0, it means that we can put it into roads
@@ -65,7 +65,7 @@ public class Tower extends View{
         return  towerY + blockSize / 2;
     }
 
-    public void update(int x, int y, yasuo who_notify_me) {
+    public void update(int x, int y, Enemy who_notify_me) {
         if(!who_notify_me.is_dead()){
             double dis = Math.sqrt(Math.pow((x - center_x()), 2)+ Math.pow(y - center_y(), 2));
             if (attacking == 0) { // now attack nobody
