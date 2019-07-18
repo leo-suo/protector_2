@@ -15,7 +15,7 @@
         android:text="Your Bag" />
 
     <TextView
-        android:id="@+id/btn_2"
+        android:id="@+id/your_gold"
         android:layout_width="100dp"
         android:layout_height="20dp"
         android:layout_alignParentBottom="true"
@@ -26,7 +26,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_2"
+        android:layout_above="@+id/your_gold"
         android:layout_below="@+id/btn_1"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp">
@@ -45,11 +45,10 @@
 
                 <ImageView
                     android:id="@+id/tower1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/tower1"
-                    />
+                    app:srcCompat="@drawable/tower1" />
 
                 <TextView
                     android:id="@+id/num_tower1"
@@ -70,13 +69,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onBuyClick"
                     android:text="Buy" />
 
                 <Button
-                    android:id="@+id/Sell"
+                    android:id="@+id/sell1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onSellClick"
                     android:text="Sell" />
 
             </LinearLayout>
@@ -88,13 +89,13 @@
 
                 <ImageView
                     android:id="@+id/tower2"
-                    android:layout_width="121dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/tower2" />
 
                 <TextView
-                    android:id="@+id/num_tower1"
+                    android:id="@+id/num_tower2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -112,13 +113,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onBuyClick"
                     android:text="Buy" />
 
                 <Button
-                    android:id="@+id/Sell"
+                    android:id="@+id/sell2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onSellClick"
                     android:text="Sell" />
 
             </LinearLayout>
@@ -130,13 +133,13 @@
 
                 <ImageView
                     android:id="@+id/tower3"
-                    android:layout_width="121dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/tower3" />
 
                 <TextView
-                    android:id="@+id/num_tower1"
+                    android:id="@+id/num_tower3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -154,13 +157,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onBuyClick"
                     android:text="Buy" />
 
                 <Button
-                    android:id="@+id/Sell"
+                    android:id="@+id/sell3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onSellClick"
                     android:text="Sell" />
 
             </LinearLayout>
@@ -172,13 +177,13 @@
 
                 <ImageView
                     android:id="@+id/tower4"
-                    android:layout_width="121dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/tower4" />
 
                 <TextView
-                    android:id="@+id/num_tower1"
+                    android:id="@+id/num_tower4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -196,13 +201,279 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onBuyClick"
                     android:text="Buy" />
 
                 <Button
-                    android:id="@+id/Sell"
+                    android:id="@+id/sell4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="onSellClick"
+                    android:text="Sell" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/tower5"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/tower5" />
+
+                <TextView
+                    android:id="@+id/num_tower5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="x1" />
+
+                <Button
+                    android:id="@+id/Upgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Upgrade" />
+
+                <Button
+                    android:id="@+id/Buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onBuyClick"
+                    android:text="Buy" />
+
+                <Button
+                    android:id="@+id/sell5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onSellClick"
+                    android:text="Sell" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/tower6"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/tower6" />
+
+                <TextView
+                    android:id="@+id/num_tower6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="x1" />
+
+                <Button
+                    android:id="@+id/Upgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Upgrade" />
+
+                <Button
+                    android:id="@+id/Buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onBuyClick"
+                    android:text="Buy" />
+
+                <Button
+                    android:id="@+id/sell6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onSellClick"
+                    android:text="Sell" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/tower7"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/tower7" />
+
+                <TextView
+                    android:id="@+id/num_tower7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="x1" />
+
+                <Button
+                    android:id="@+id/Upgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Upgrade" />
+
+                <Button
+                    android:id="@+id/Buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onBuyClick"
+                    android:text="Buy" />
+
+                <Button
+                    android:id="@+id/sell7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onSellClick"
+                    android:text="Sell" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/tower8"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/tower8" />
+
+                <TextView
+                    android:id="@+id/num_tower8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="x1" />
+
+                <Button
+                    android:id="@+id/Upgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Upgrade" />
+
+                <Button
+                    android:id="@+id/Buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onBuyClick"
+                    android:text="Buy" />
+
+                <Button
+                    android:id="@+id/sell8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onSellClick"
+                    android:text="Sell" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/tower9"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/tower9" />
+
+                <TextView
+                    android:id="@+id/num_tower9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="x1" />
+
+                <Button
+                    android:id="@+id/Upgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Upgrade" />
+
+                <Button
+                    android:id="@+id/Buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onBuyClick"
+                    android:text="Buy" />
+
+                <Button
+                    android:id="@+id/sell9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onSellClick"
+                    android:text="Sell" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/tower10"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/tower10" />
+
+                <TextView
+                    android:id="@+id/num_tower10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="x1" />
+
+                <Button
+                    android:id="@+id/Upgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Upgrade" />
+
+                <Button
+                    android:id="@+id/Buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onBuyClick"
+                    android:text="Buy" />
+
+                <Button
+                    android:id="@+id/sell10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onSellClick"
                     android:text="Sell" />
 
             </LinearLayout>

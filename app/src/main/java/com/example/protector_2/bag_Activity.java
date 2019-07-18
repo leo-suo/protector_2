@@ -1,9 +1,14 @@
 package com.example.protector_2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.graphics.*;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -14,6 +19,17 @@ public class bag_Activity extends AppCompatActivity {
     public int [] your_own_tower;
     public int num_towers = 4;
     public int [] all_towers  = {1,2,3,4};
+    public int [] sell_id = {R.id.sell1,R.id.sell2,R.id.sell3,R.id.sell4,R.id.sell5,R.id.sell6,R.id.sell7,R.id.sell8,R.id.sell9,R.id.sell10};
+    public int [] tower_id = {R.id.tower1, R.id.tower2, R.id.tower3,R.id.tower4,R.id.tower5,R.id.tower6,R.id.tower7,R.id.tower8,R.id.tower9,R.id.sell10};
+    public int [] tower_price = {1,2,3,4,5,6,7,8,9,10};
+
+    //show numbers of towers you have
+    public int [] tower_owns = {1,1,1,1,1,1,1,1,1,1};
+    public int [] text_id = {R.id.num_tower1,R.id.num_tower2,R.id.num_tower3,R.id.num_tower4,R.id.num_tower5,R.id.num_tower6,R.id.num_tower7,R.id.num_tower8,R.id.num_tower9,R.id.num_tower10};
+
+    public String gold_info;
+    public int num_gold;
+
 
 
     public static int getCountFromArray(int v, int[] array) {
@@ -45,18 +61,28 @@ public class bag_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bag_);
 
+
         readfiles();
         ImageView tower1 = findViewById(R.id.tower1);
         ImageView tower2 = findViewById(R.id.tower2);
         ImageView tower3 = findViewById(R.id.tower3);
         ImageView tower4 = findViewById(R.id.tower4);
         ImageView [] towers  ={tower1,tower2,tower3,tower4};
-        show_tower(your_own_tower,towers);
+        //show_tower(your_own_tower,towers);
+        TextView t = findViewById(R.id.your_gold);
+        t.setText("Your Gold: " + String.valueOf(num_gold));
+
+        //show numbers of tower you have
+        for(int i = 0; i< text_id.length;i++){
+            TextView x = findViewById(text_id[i]);
+            x.setText("x"+ tower_owns[i]);
+        }
 
     }
 
 
     public void readfiles() {
+        //-----------read beg_info----------
         String data = "";
         StringBuffer sbuffer = new StringBuffer();
         InputStream is = this.getResources().openRawResource(R.raw.bag_info);
@@ -80,6 +106,26 @@ public class bag_Activity extends AppCompatActivity {
             your_own_tower[i] = Integer.parseInt(Character.toString(bag_info.charAt(i)));
         }
 
+        //-----------read gold_info----------
+        String ndata =  null;
+        StringBuffer nsbuffer = new StringBuffer();
+        InputStream nis = this.getResources().openRawResource(R.raw.gold_info);
+        BufferedReader nreader = new BufferedReader(new InputStreamReader(nis));
+
+        if (nis != null) {
+            try {
+                while ((ndata = nreader.readLine()) != null) {
+                    nsbuffer.append(ndata);
+                }
+                nis.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        gold_info = nsbuffer.toString();
+        num_gold = Integer.valueOf(gold_info);
+        System.out.println(num_gold);
+
     }
 
     public void show_tower(int []your_own_tower, ImageView [] towers){
@@ -98,6 +144,37 @@ public class bag_Activity extends AppCompatActivity {
             matrix.setSaturation(0);
             ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
             towers[num].setColorFilter(filter);
+        }
+
+    }
+
+    public void onBuyClick(View view){
+        Intent intent = new Intent(bag_Activity.this,shop_Activity.class);
+        startActivity(intent);
+    }
+
+
+    public void onSellClick(View view){
+        for(int i = 0; i<tower_id.length;i++){
+            if(sell_id[i] == view.getId()){
+                if(tower_owns[i] >0){
+                    //price
+                    num_gold+= tower_price[i];
+                    TextView t = findViewById(R.id.your_gold);
+                    t.setText("Your Gold " + num_gold);
+                    //update the tower
+                    tower_owns[i] -=1;
+                    TextView x = findViewById(text_id[i]);
+                    x.setText("x"+tower_owns[i]);
+                } else
+                {
+                    Context context = getApplicationContext();
+                    CharSequence text ="You do not have the tower right now!";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast.makeText(context,text,duration).show();
+                }
+
+            }
         }
 
     }
