@@ -1,10 +1,12 @@
 package com.example.protector_2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -13,7 +15,7 @@ import java.io.InputStreamReader;
 public class shop_Activity extends AppCompatActivity {
     public int gold_num;
     public int[] tower_id = {R.id.t1_bt,R.id.t2_bt,R.id.t3_bt,R.id.t4_bt,R.id.t5_bt,R.id.t6_bt,R.id.t7_bt,
-            R.id.t8_bt,R.id.t9_bt,R.id.t10_bt,R.id.t11_bt,R.id.t12_bt,R.id.t13_bt,R.id.t14_bt,R.id.t15_bt};
+            R.id.t8_bt,R.id.t9_bt,R.id.t10_bt};
 
 
     public class tower{
@@ -46,11 +48,24 @@ public class shop_Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onPurchaseClick(View View){
-        String num = String.valueOf(gold_num+100);
-        gold_num-=100;
-        TextView t = findViewById(R.id.Gold_text);
-        t.setText("Gold: "+num );
+    public void onPurchaseClick(View view){
+        int p = 0;
+        for(int i = 0; i < tower_id.length; i++){
+            if(tower_id[i] == view.getId()){
+                p = (i+1)*10;
+            }
+        }
+        if (p <= gold_num){
+            gold_num-=p;
+            String num = String.valueOf(gold_num);
+            TextView t = findViewById(R.id.Gold_text);
+            t.setText("Gold: "+num );
+        } else{
+            Context context = getApplicationContext();
+            CharSequence text = "Not Enough Gold!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast.makeText(context, text, duration).show();
+        }
     }
 
 
