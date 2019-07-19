@@ -32,13 +32,17 @@ public class shop_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_);
-        read_gold_files();
+        Intent intent = getIntent();
+        gold_num = intent.getIntExtra("Gold",-1);
         TextView t = findViewById(R.id.Gold_text);
         t.setText("Gold :" +String.valueOf(gold_num));
 
     }
 
     public void onBackButtonClick(View View){
+        Intent intent = new Intent();
+        intent.putExtra("Gold",gold_num);
+        setResult(RESULT_OK,intent);
         finish();
     }
 
@@ -68,23 +72,5 @@ public class shop_Activity extends AppCompatActivity {
         }
     }
 
-
-    public void read_gold_files(){
-        String data = "";
-        StringBuffer sbuffer = new StringBuffer();
-        InputStream is = this.getResources().openRawResource(R.raw.gold_info);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        if (is != null) {
-            try {
-                while ((data = reader.readLine()) != null) {
-                    sbuffer.append(data);
-                }
-                is.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        gold_num = Integer.parseInt(sbuffer.toString());
-    }
 
 }

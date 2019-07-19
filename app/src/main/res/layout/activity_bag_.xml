@@ -18,15 +18,18 @@
         android:id="@+id/your_gold"
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginRight="0dp"
         android:text="Your Gold: " />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/your_gold"
+        android:layout_above="@+id/button3"
         android:layout_below="@+id/btn_1"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp">
@@ -58,14 +61,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -102,14 +105,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -146,14 +149,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -190,14 +193,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -234,14 +237,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -278,14 +281,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -322,14 +325,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -366,14 +369,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -410,14 +413,14 @@
                     android:text="x1" />
 
                 <Button
-                    android:id="@+id/Upgrade"
+                    android:id="@+id/Upgrade9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Upgrade" />
 
                 <Button
-                    android:id="@+id/Buy"
+                    android:id="@+id/Buy9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -479,6 +482,15 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:onClick="onBackClick"
+        android:text="Back" />
 
 
 </RelativeLayout>

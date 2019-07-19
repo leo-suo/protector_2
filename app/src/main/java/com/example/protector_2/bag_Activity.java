@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.graphics.*;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -61,6 +62,9 @@ public class bag_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bag_);
 
+        Intent intent = getIntent();
+        num_gold = intent.getIntExtra("Gold",-1);
+
 
         readfiles();
         ImageView tower1 = findViewById(R.id.tower1);
@@ -106,26 +110,6 @@ public class bag_Activity extends AppCompatActivity {
             your_own_tower[i] = Integer.parseInt(Character.toString(bag_info.charAt(i)));
         }
 
-        //-----------read gold_info----------
-        String ndata =  null;
-        StringBuffer nsbuffer = new StringBuffer();
-        InputStream nis = this.getResources().openRawResource(R.raw.gold_info);
-        BufferedReader nreader = new BufferedReader(new InputStreamReader(nis));
-
-        if (nis != null) {
-            try {
-                while ((ndata = nreader.readLine()) != null) {
-                    nsbuffer.append(ndata);
-                }
-                nis.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        gold_info = nsbuffer.toString();
-        num_gold = Integer.valueOf(gold_info);
-        System.out.println(num_gold);
-
     }
 
     public void show_tower(int []your_own_tower, ImageView [] towers){
@@ -148,11 +132,28 @@ public class bag_Activity extends AppCompatActivity {
 
     }
 
-    public void onBuyClick(View view){
-        Intent intent = new Intent(bag_Activity.this,shop_Activity.class);
-        startActivity(intent);
+
+    @Override
+    protected void onActivityResult(int requestcode, int resultcode, Intent intent){
+        super.onActivityResult(requestcode,resultcode,intent);
+        num_gold = intent.getIntExtra("Gold",-1);
+        TextView t = findViewById(R.id.your_gold);
+        t.setText("Your Gold " + num_gold);
     }
 
+    public void onBuyClick(View view){
+        Intent intent = new Intent(bag_Activity.this,shop_Activity.class);
+        intent.putExtra("Gold",num_gold);
+        startActivityForResult(intent,0);
+    }
+
+
+    public void onBackClick(View view){
+        Intent intent = new Intent();
+        intent.putExtra("Gold",num_gold);
+        setResult(RESULT_OK,intent);
+        finish();
+    }
 
     public void onSellClick(View view){
         for(int i = 0; i<tower_id.length;i++){
