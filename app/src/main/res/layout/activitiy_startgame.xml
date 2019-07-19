@@ -7,7 +7,7 @@
 
     <Button
         android:id="@+id/tower_1"
-        android:layout_width="70dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
@@ -15,17 +15,17 @@
 
     <Button
         android:id="@+id/tower_2"
-        android:layout_width="70dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_below="@id/tower_1"
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:text="tower_2" />
+        android:text="TWR" />
 
     <Button
         android:id="@+id/tower_3"
-        android:layout_width="70dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_below="@id/tower_2"
         android:layout_alignParentRight="true"
@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/tower_4"
-        android:layout_width="70dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_below="@id/tower_3"
         android:layout_alignParentRight="true"
@@ -45,7 +45,7 @@
 
     <Button
         android:id="@+id/tower_5"
-        android:layout_width="70dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_below="@id/tower_4"
         android:layout_alignParentRight="true"
@@ -55,7 +55,7 @@
 
     <Button
         android:id="@+id/tower_6"
-        android:layout_width="70dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_below="@id/tower_5"
         android:layout_alignParentRight="true"
