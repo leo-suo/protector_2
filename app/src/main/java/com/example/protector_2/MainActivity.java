@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
                         StartGame.class);
-                startActivity(intent);
+                intent.putExtra("Gold",Gold_num);
+                startActivityForResult(intent,0);
 
             }
         });

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -17,6 +18,7 @@ import java.io.InputStreamReader;
 
 public class StartGame extends Activity {
     static public int mouse = 0;
+    public int Gold_num;
 
     GameView gv;
     public static String map_info;
@@ -32,6 +34,13 @@ public class StartGame extends Activity {
         readfiles();
         System.out.println("-----onCreate-----");
         setContentView(R.layout.activitiy_startgame);
+
+
+        Intent intent = getIntent();
+        Gold_num = intent.getIntExtra("Gold",-1);
+        TextView t = findViewById(R.id.Gold_text);
+        t.setText("Gold :" +String.valueOf(Gold_num));
+
 
         // GameView
         LinearLayout root = (LinearLayout)findViewById(R.id.root);
@@ -124,6 +133,10 @@ public class StartGame extends Activity {
 
     public void end(){
         System.out.println("I AM HERERERRERERERERER");
+        Gold_num += 100;
+        Intent intent = new Intent();
+        intent.putExtra("Gold",Gold_num);
+        setResult(RESULT_OK,intent);
         finish();
     }
 
