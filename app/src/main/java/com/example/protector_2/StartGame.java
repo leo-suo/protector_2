@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 public class StartGame extends Activity {
     static public int mouse = 0;
 
-    View gameView;
+    GameView gv;
     public static String map_info;
 
     Button but1, but2, but3, but4, but5, but6;
@@ -35,7 +35,7 @@ public class StartGame extends Activity {
 
         // GameView
         LinearLayout root = (LinearLayout)findViewById(R.id.root);
-        final GameView gv = new GameView(this);
+        gv = new GameView(this);
         root.addView(gv);
 
         but1 = findViewById(R.id.tower_1);
@@ -122,10 +122,15 @@ public class StartGame extends Activity {
         System.out.println("-----onDestroy -----");
     }
 
+    public void end(){
+        System.out.println("I AM HERERERRERERERERER");
+        finish();
+    }
+
     public void readfiles() {
         String data = "";
         StringBuffer sbuffer = new StringBuffer();
-        InputStream is = this.getResources().openRawResource(R.raw.mission2);
+        InputStream is = this.getResources().openRawResource(R.raw.mission1);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
         if (is != null) {

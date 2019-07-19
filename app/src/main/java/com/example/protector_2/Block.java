@@ -13,20 +13,19 @@ public class Block {
     public int center_x = x + blockSize / 2;
     public int center_y = y + blockSize / 2;
 
+    // Represent whether it is a end point
+    public int end = 0;
+
     public Block(int x, int y, int groundid, int airid){
         this.x = x;
         this.y = y;
         this.groundId = groundid;
         this.airId = airid;
-    }
-
-    public boolean in_this_block(int a, int b){
-        if(a >= x && a < x + blockSize && b >= y && b < y + blockSize){
-            return true;
-        }else {
-            return false;
+        if(groundid == 3){
+            end = 1;
         }
     }
+
 
     public boolean in_the_block(float point_x, float point_y){
         if(point_x >= x &&

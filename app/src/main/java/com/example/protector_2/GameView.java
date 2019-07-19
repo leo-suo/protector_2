@@ -30,6 +30,8 @@ public class GameView extends View{
 
     public static Tower[] tower;
 
+    public static int total_hp = 1000;
+
     // enemy
     public Enemy yasuo_array[];
 
@@ -41,6 +43,7 @@ public class GameView extends View{
     public static int number_of_tower = 0;
     // the number of the tower we create
 
+    static StartGame sg;
 
     Handler handler; // handler is required to schedule a runnable after some delay
     Runnable runnable;
@@ -59,10 +62,17 @@ public class GameView extends View{
     boolean gameStat = true;
 
 
-
+    public  static  void is_finish(){
+        //if(total_hp <= 0){
+            sg.end();
+        //}
+    }
 
     public GameView(Context context){
+
         super(context);
+
+        this.sg = (StartGame) context;
         this.context = context;
         this.map_info = StartGame.map_info;
         handler = new Handler();
@@ -89,30 +99,51 @@ public class GameView extends View{
             }
         }
 
+        number_of_yasuo = map_info.charAt(78) - '0';
 
         // create yasuo class
         yasuo_array = new Enemy[number_of_yasuo];
-        /*
-        for(int i = 0; i < 6; ++i) {
-            yasuo_array[i] = new yasuo(context, 0, 0,  block, which_yasuo_now);
-            yasuo_array[i+1] = new Enemy_Chitu(context, 0, 0,  block, which_yasuo_now);
-            yasuo_array[i+2] = new Enemy_Darius(context, 0, 0,  block, which_yasuo_now);
-            yasuo_array[i+3] = new Enemy_Fiora(context, 0, 0,  block, which_yasuo_now);
-            yasuo_array[i+4] = new Enemy_Jinx(context, 0, 0,  block, which_yasuo_now);
 
-            which_yasuo_now++;
+        for(int i = 0; i < number_of_yasuo; ++i){
+            int start_num = 78 + i * 5;
+
+            // Concrete Class
+            if(map_info.charAt(start_num + 1) == '7'){
+                yasuo_array[i] = new yasuo(context, 0, 0,  block, i);
+            }else if(map_info.charAt(start_num + 1) == '2'){
+                yasuo_array[i] = new Enemy_Chitu(context, 0, 0,  block, i);
+            }else if(map_info.charAt(start_num + 1) == '3'){
+                yasuo_array[i] = new Enemy_Darius(context, 0, 0,  block, i);
+            }else if(map_info.charAt(start_num + 1) == '4'){
+                yasuo_array[i] = new Enemy_Fiora(context, 0, 0,  block, i);
+            }else if(map_info.charAt(start_num + 1) == '5'){
+                yasuo_array[i] = new Enemy_Jinx(context, 0, 0,  block, i);
+            }else if(map_info.charAt(start_num + 1) == '6'){
+                yasuo_array[i] = new Enemy_Lee(context, 0, 0,  block, i);
+            }else{
+                yasuo_array[i] = new Enemy_Mordekaiser(context, 0, 0,  block, i);
+            }
+
+
+            // Decorator
+            Enemy_Interface n_e = yasuo_array[i];
+            if(map_info.charAt(start_num + 2) == '1'){
+                n_e = new Decorator_Armor(n_e);
+            }
+            if(map_info.charAt(start_num + 3) == '1'){
+                n_e = new Decorator_Dagger(n_e);
+            }
+            if(map_info.charAt(start_num + 4) == '1'){
+                n_e = new Decorator_Helmet(n_e);
+            }
+            if(map_info.charAt(start_num + 5) == '1'){
+                n_e = new Decorator_Sword(n_e);
+            }
+
+            //Enemy_Interface n_e = new Decorator_Armor(new Decorator_Dagger(yasuo_array[i]));
+            yasuo_array[i].set_damage(n_e.return_attack_damage());
+            yasuo_array[i].set_hp(n_e.return_hp());
         }
-        */
-        yasuo_array[0] = new yasuo(context, 0, 0,  block, 0);
-        yasuo_array[1] = new Enemy_Chitu(context, 0, 0,  block, 1);
-        yasuo_array[2] = new Enemy_Darius(context, 0, 0,  block, 2);
-        yasuo_array[3] = new Enemy_Fiora(context, 0, 0,  block, 3);
-        yasuo_array[4] = new Enemy_Jinx(context, 0, 0,  block, 4);
-        yasuo_array[5] = new Enemy_Chitu(context, 0, 0,  block, 5);
-        yasuo_array[6] = new Enemy_Lee(context, 0, 0,  block, 6);
-        yasuo_array[7] = new Enemy_Mordekaiser(context, 0, 0,  block, 7);
-        yasuo_array[8] = new Enemy_Mordekaiser(context, 0, 0,  block, 8);
-        yasuo_array[9] = new Enemy_Mordekaiser(context, 0, 0,  block, 9);
 
 
 
@@ -165,6 +196,7 @@ public class GameView extends View{
             for(int i = 0; i < number_of_yasuo; ++i){
                 yasuo_array[i].yasuo_move();
                 yasuo_array[i].notifyOberver();
+                yasuo_array[i].update_position();
             }
 
         }

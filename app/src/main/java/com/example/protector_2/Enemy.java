@@ -15,6 +15,7 @@ abstract public class Enemy extends View implements Enemy_Interface{
     // yasuo position
     public int yasuoX;
     public int yasuoY;
+    public int game_finish = 0;
 
     // 4 direction
     int direction = 0;
@@ -26,9 +27,13 @@ abstract public class Enemy extends View implements Enemy_Interface{
     boolean hasdown = false;
 
     // now, which block yasuo in
-    int now_block_x = 0;
+    int now_block_x = 0;// This two is the beginning block
     int now_block_y = 0;
     int order;
+
+    int in_which_x = 0;
+    int in_which_y = 0; // This two is where is the enemy now!!!!
+    // Updating every step
 
     public int ingame = 0; // to check if yasuo is in the game
 
@@ -42,6 +47,14 @@ abstract public class Enemy extends View implements Enemy_Interface{
     int hp = 500;
     public int attack_damage = 1;
 
+    public void set_hp(int x){
+        this.hp = x;
+    }
+
+    public void set_damage(int x){
+        attack_damage = x;
+    }
+
     @Override
     public int return_attack_damage(){
         return attack_damage;
@@ -50,6 +63,25 @@ abstract public class Enemy extends View implements Enemy_Interface{
     @Override
     public int return_hp(){
         return hp;
+    }
+
+    public void update_position(){
+        for (int j = 0; j < worldHeight; j++) {
+            for (int i = 0; i < worldWidth; i++) {
+                if(block[j][i].in_the_block(yasuoX, yasuoY)){
+                    in_which_x = i;
+                    in_which_y = j;
+                }
+            }
+        }
+    }
+
+    public boolean in_the_end(){
+        if(block[in_which_y][in_which_x].end == 1){
+            GameView.is_finish();
+            return true;
+        }
+        return false;
     }
 
     public Enemy(Context context, int x, int y, Block[][] block, int order){
@@ -64,8 +96,6 @@ abstract public class Enemy extends View implements Enemy_Interface{
         int start_y = 0;
         for (int j = 0; j < worldHeight; j++) {
             for (int i = 0; i < worldWidth; i++) {
-                //System.out.println("wqeqweqweqweqweqweqeq");
-                //System.out.println(GameView.block[j][x].groundId);
                 if (GameView.block[j][i].groundId == 2) {
                     start_x = GameView.block[j][i].x - order * blockSize - blockSize;
                     start_y = GameView.block[j][i].y;
@@ -98,79 +128,81 @@ abstract public class Enemy extends View implements Enemy_Interface{
     }
 
     public void yasuo_move() {
-        if(ingame == 0){
-            check_ingame();
-            yasuoX += 5;
-        }else{
-            if (direction == 0)
+        if(!in_the_end()){
+            if(ingame == 0){
+                check_ingame();
                 yasuoX += 5;
-            else if (direction == 1)
-                yasuoY -= 5;
-            else if (direction == 2)
-                yasuoX -= 5;
-            else
-                yasuoY += 5;
+            }else{
+                if (direction == 0)
+                    yasuoX += 5;
+                else if (direction == 1)
+                    yasuoY -= 5;
+                else if (direction == 2)
+                    yasuoX -= 5;
+                else
+                    yasuoY += 5;
 
-            walk += 5;
-            if (walk >= blockSize) {
-                if (direction == 0) {
-                    now_block_x += 1;
-                    hasright = true;
+                walk += 5;
+                if (walk >= blockSize) {
+                    if (direction == 0) {
+                        now_block_x += 1;
+                        hasright = true;
 
-                } else if (direction == 1) {
-                    now_block_y -= 1;
-                    hasup = true;
-                } else if (direction == 2) {
-                    now_block_x -= 1;
-                    hasleft = true;
-                } else {
-                    now_block_y += 1;
-                    hasdown = true;
-                }
-
-                if (!hasleft) {
-                    try {
-                        if (block[now_block_y][now_block_x + 1].groundId == 1) {
-                            direction = 0;
-                        }
-                    } catch (Exception e) {
+                    } else if (direction == 1) {
+                        now_block_y -= 1;
+                        hasup = true;
+                    } else if (direction == 2) {
+                        now_block_x -= 1;
+                        hasleft = true;
+                    } else {
+                        now_block_y += 1;
+                        hasdown = true;
                     }
-                }
 
-                if (!hasright) {
-                    try {
-                        if (block[now_block_y][now_block_x - 1].groundId == 1) {
-                            direction = 2;
+                    if (!hasleft) {
+                        try {
+                            if (block[now_block_y][now_block_x + 1].groundId == 1) {
+                                direction = 0;
+                            }
+                        } catch (Exception e) {
                         }
-                    } catch (Exception e) {
                     }
-                }
 
-                if (!hasup) {
-                    try {
-                        if (block[now_block_y + 1][now_block_x].groundId == 1) {
-                            direction = 3;
+                    if (!hasright) {
+                        try {
+                            if (block[now_block_y][now_block_x - 1].groundId == 1) {
+                                direction = 2;
+                            }
+                        } catch (Exception e) {
                         }
-                    } catch (Exception e) {
                     }
-                }
 
-                if (!hasdown) {
-                    try {
-                        if (block[now_block_y - 1][now_block_x].groundId == 1) {
-                            direction = 1;
+                    if (!hasup) {
+                        try {
+                            if (block[now_block_y + 1][now_block_x].groundId == 1) {
+                                direction = 3;
+                            }
+                        } catch (Exception e) {
                         }
-                    } catch (Exception e) {
                     }
+
+                    if (!hasdown) {
+                        try {
+                            if (block[now_block_y - 1][now_block_x].groundId == 1) {
+                                direction = 1;
+                            }
+                        } catch (Exception e) {
+                        }
+                    }
+
+                    hasleft = false;
+                    hasup = false;
+                    hasdown = false;
+                    hasright = false;
+                    walk = 0;
                 }
 
-                hasleft = false;
-                hasup = false;
-                hasdown = false;
-                hasright = false;
-                walk = 0;
             }
-
         }
     }
 
