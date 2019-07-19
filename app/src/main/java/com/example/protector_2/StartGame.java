@@ -131,13 +131,17 @@ public class StartGame extends Activity {
         System.out.println("-----onDestroy -----");
     }
 
-    public void end(){
-        System.out.println("I AM HERERERRERERERERER");
-        Gold_num += 100;
+    public void end(int is_win){
+        if(is_win == 1){
+            Gold_num += 100;
+        }
         Intent intent = new Intent();
         intent.putExtra("Gold",Gold_num);
         setResult(RESULT_OK,intent);
+        System.out.println("FUCK YOUR MOTHER");
         finish();
+        System.out.println("FUCK YOU");
+
     }
 
     public void readfiles() {

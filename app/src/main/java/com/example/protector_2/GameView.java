@@ -37,7 +37,9 @@ public class GameView extends View{
 
     public String map_info;
 
-    int number_of_yasuo = 10;
+    static int number_of_yasuo = 0;
+    public static int num_of_dead_yasuo = 0;
+
     int which_yasuo_now = 0; // to make yasuo appear in different order
 
     public static int number_of_tower = 0;
@@ -63,9 +65,15 @@ public class GameView extends View{
 
 
     public  static  void is_finish(){
-        //if(total_hp <= 0){
-            sg.end();
-        //}
+        System.out.println(total_hp);
+        if(num_of_dead_yasuo == number_of_yasuo){
+            sg.end(1);
+        }else if(total_hp <= 0){
+            sg.end(0);
+        }
+    }
+    public static void be_attack(int att){
+        total_hp = total_hp - att;
     }
 
     public GameView(Context context){
@@ -197,7 +205,9 @@ public class GameView extends View{
                 yasuo_array[i].yasuo_move();
                 yasuo_array[i].notifyOberver();
                 yasuo_array[i].update_position();
+                yasuo_array[i].attack_base();
             }
+            is_finish();
 
         }
 

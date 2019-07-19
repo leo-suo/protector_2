@@ -45,7 +45,14 @@ abstract public class Enemy extends View implements Enemy_Interface{
 
     // yasuo game information
     int hp = 500;
+    int has_update_dead_info = 0;
     public int attack_damage = 1;
+
+    public void attack_base(){
+        if(in_the_end()){
+            GameView.be_attack(attack_damage);
+        }
+    }
 
     public void set_hp(int x){
         this.hp = x;
@@ -78,7 +85,6 @@ abstract public class Enemy extends View implements Enemy_Interface{
 
     public boolean in_the_end(){
         if(block[in_which_y][in_which_x].end == 1){
-            GameView.is_finish();
             return true;
         }
         return false;
@@ -259,6 +265,10 @@ abstract public class Enemy extends View implements Enemy_Interface{
         if(hp > 0){
             return false;
         }else{
+            if(has_update_dead_info == 0){
+                has_update_dead_info = 1;
+                GameView.num_of_dead_yasuo++;
+            }
             return true;
         }
     }
