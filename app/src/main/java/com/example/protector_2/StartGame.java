@@ -54,6 +54,7 @@ public class StartGame extends Activity {
         }
 
 
+        
         // GameView
         LinearLayout root = (LinearLayout)findViewById(R.id.root);
         gv = new GameView(this);
