@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.graphics.*;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -238,14 +237,19 @@ public class bag_Activity extends AppCompatActivity {
     public void onUpgradeClick(View view){
         for(int i =0;i<tower_id.length;i++){
             if(upgrade_id[i]== view.getId()){
-                if(tower_owns[i] >2){
-                    if(num_gold >10){
+                if(tower_owns[i] >=2){
+                    if(num_gold >=10){
                         num_gold -=10;
                         tower_owns[i] -=1;
                         cost[i] -=5;
+                        if(cost[i]<=0){
+                            cost[i] = 0;
+                        }
 
                         TextView t = findViewById(text_id[i]);
                         t.setText("x"+ tower_owns[i]+ "  "+"Cost: " + cost[i]);
+                        TextView x = findViewById(R.id.your_gold);
+                        x.setText("Your Gold " + num_gold);
 
                         Context context = getApplicationContext();
                         CharSequence text ="Upgrading successfully! Cost reduce!";
