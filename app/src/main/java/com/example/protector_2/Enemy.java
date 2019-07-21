@@ -49,7 +49,7 @@ abstract public class Enemy extends View implements Enemy_Interface{
     public int attack_damage = 1;
 
     public void attack_base(){
-        if(in_the_end()){
+        if(in_the_end() && !is_dead()){
             GameView.be_attack(attack_damage);
         }
     }
@@ -88,6 +88,17 @@ abstract public class Enemy extends View implements Enemy_Interface{
             return true;
         }
         return false;
+    }
+
+    public void attack_tower(){
+        if(block[in_which_y][in_which_x].have_tower == 1){
+            System.out.println("I AM HRERERERERE");
+            block[in_which_y][in_which_x].block_tower.be_attack(attack_damage);
+            System.out.println(block[in_which_y][in_which_x].block_tower.hp);
+            if(block[in_which_y][in_which_x].block_tower.hp <= 0){
+                block[in_which_y][in_which_x].have_tower = 0;
+            }
+        }
     }
 
     public Enemy(Context context, int x, int y, Block[][] block, int order){
@@ -134,7 +145,7 @@ abstract public class Enemy extends View implements Enemy_Interface{
     }
 
     public void yasuo_move() {
-        if(!in_the_end()){
+        if(!in_the_end() && block[in_which_y][in_which_x].have_tower == 0){
             if(ingame == 0){
                 check_ingame();
                 yasuoX += 5;

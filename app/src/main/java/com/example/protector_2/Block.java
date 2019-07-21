@@ -7,14 +7,17 @@ public class Block {
     public int airId;
     public int x;
     public int y;
+    public int have_tower = 0;
+    public Tower block_tower;
     // 4 direction
     int direction = 5;
     // right = 0; up = 1; left = 2; down = 3
-    public int center_x = x + blockSize / 2;
-    public int center_y = y + blockSize / 2;
+
 
     // Represent whether it is a end point
     public int end = 0;
+
+    public int kind = 1;
 
     public Block(int x, int y, int groundid, int airid){
         this.x = x;
@@ -23,6 +26,9 @@ public class Block {
         this.airId = airid;
         if(groundid == 3){
             end = 1;
+        }
+        if(groundid == 0){
+            kind = 0; // 0 represent it is the wall
         }
     }
 

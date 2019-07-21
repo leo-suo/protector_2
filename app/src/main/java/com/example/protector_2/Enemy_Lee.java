@@ -11,8 +11,8 @@ public class Enemy_Lee extends Enemy {
     public Enemy_Lee(Context context, int x, int y, Block[][] block, int order) {
         super(context, x, y, block, order);
         max_frame = 5;
-        attack_damage = 1;
-        hp = 500;
+        attack_damage = 25;
+        hp = 250;
         define();
     }
 

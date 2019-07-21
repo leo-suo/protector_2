@@ -11,7 +11,7 @@ public class Enemy_Mordekaiser extends Enemy {
     public Enemy_Mordekaiser(Context context, int x, int y, Block[][] block, int order) {
         super(context, x, y, block, order);
         max_frame = 6;
-        attack_damage = 1;
+        attack_damage = 50;
         hp = 500;
         define();
     }

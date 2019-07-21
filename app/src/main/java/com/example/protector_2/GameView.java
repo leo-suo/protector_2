@@ -30,7 +30,7 @@ public class GameView extends View{
 
     public static Tower[] tower;
 
-    public static int total_hp = 1000;
+    public static int total_hp = 5000;
 
     // enemy
     public Enemy yasuo_array[];
@@ -40,12 +40,11 @@ public class GameView extends View{
     static int number_of_yasuo = 0;
     public static int num_of_dead_yasuo = 0;
 
-    int which_yasuo_now = 0; // to make yasuo appear in different order
 
     public static int number_of_tower = 0;
     // the number of the tower we create
 
-    static StartGame sg;
+    StartGame sg;
 
     Handler handler; // handler is required to schedule a runnable after some delay
     Runnable runnable;
@@ -64,8 +63,7 @@ public class GameView extends View{
     boolean gameStat = true;
 
 
-    public  static  void is_finish(){
-        System.out.println(total_hp);
+    public  void is_finish(){
         if(num_of_dead_yasuo == number_of_yasuo){
             sg.end(1);
         }else if(total_hp <= 0){
@@ -206,6 +204,7 @@ public class GameView extends View{
                 yasuo_array[i].notifyOberver();
                 yasuo_array[i].update_position();
                 yasuo_array[i].attack_base();
+                yasuo_array[i].attack_tower();
             }
             is_finish();
 
@@ -223,7 +222,7 @@ public class GameView extends View{
 
         // draw tower
         for(int i = 0; i < number_of_tower; ++i){
-            if(tower[i].ingame == 1){
+            if(tower[i].ingame == 1 && !tower[i].is_dead()){
                 Paint paint = new Paint();
                 canvas.drawBitmap(tower[i].bit_tower[tower[i].which_frame], tower[i].towerX,
                         tower[i].towerY, null);
@@ -260,32 +259,35 @@ public class GameView extends View{
             for(int j = 0; j < worldHeight; j++){
                 for (int i = 0; i < worldWidth; i++){
                     if(block[j][i].in_the_block(f_x, f_y)){
-                        if (StartGame.mouse == 1){
+                        if (StartGame.mouse == 1 && block[j][i].kind == 0){
                             Tower_Garen new_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
                             tower[number_of_tower] = new_t;
                             number_of_tower++;
                         }
-                        if (StartGame.mouse == 2){
+                        if (StartGame.mouse == 2 && block[j][i].kind == 1){
+                            // This tower can only put in the tower
                             Tower_Diana new_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
                             tower[number_of_tower] = new_t;
                             number_of_tower++;
+                            block[j][i].have_tower = 1;
+                            block[j][i].block_tower = new_t;
                         }
-                        if (StartGame.mouse == 3){
+                        if (StartGame.mouse == 3 && block[j][i].kind == 0){
                             Tower_Karthus new_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
                             tower[number_of_tower] = new_t;
                             number_of_tower++;
                         }
-                        if (StartGame.mouse == 4){
+                        if (StartGame.mouse == 4 && block[j][i].kind == 0){
                             Tower_Mord new_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
                             tower[number_of_tower] = new_t;
                             number_of_tower++;
                         }
-                        if (StartGame.mouse == 5){
+                        if (StartGame.mouse == 5 && block[j][i].kind == 0){
                             Tower_Kassadin new_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
                             tower[number_of_tower] = new_t;
                             number_of_tower++;
                         }
-                        if (StartGame.mouse == 6){
+                        if (StartGame.mouse == 6 && block[j][i].kind == 0){
                             Tower_Tryndamere new_t = new Tower_Tryndamere( context, block, block[j][i].x, block[j][i].y);
                             tower[number_of_tower] = new_t;
                             number_of_tower++;

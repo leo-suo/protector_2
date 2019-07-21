@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,11 +30,14 @@ public class StartGame extends Activity {
     int which_map;
     //add comment
 
+    int time = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readfiles();
         System.out.println("-----onCreate-----");
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activitiy_startgame);
 
 
@@ -138,9 +143,9 @@ public class StartGame extends Activity {
         Intent intent = new Intent();
         intent.putExtra("Gold",Gold_num);
         setResult(RESULT_OK,intent);
-        System.out.println("FUCK YOUR MOTHER");
+        System.out.println("I am HERERER");
         finish();
-        System.out.println("FUCK YOU");
+        System.exit(0);
 
     }
 

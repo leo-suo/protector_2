@@ -11,8 +11,8 @@ public class Enemy_Darius extends Enemy {
     public Enemy_Darius(Context context, int x, int y, Block[][] block, int order) {
         super(context, x, y, block, order);
         max_frame = 7;
-        attack_damage = 1;
-        hp = 500;
+        attack_damage = 10;
+        hp = 400;
         define();
     }
 

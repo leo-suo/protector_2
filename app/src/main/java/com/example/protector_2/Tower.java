@@ -32,10 +32,20 @@ abstract public class Tower extends View{
     // the attack range of this tower
     public int attack_damage = 0;
 
-    public int hp = 0;
+    public int hp = 100;
     // hp of this tower
 
     public int ingame = 0;
+    public void be_attack(int attack){
+        hp = hp - attack;
+    }
+
+    public boolean is_dead(){
+        if (hp <= 0){
+            return true;
+        }
+        return false;
+    }
 
     public Tower(Context context, Block[][] block, int x, int y) {
         super(context);

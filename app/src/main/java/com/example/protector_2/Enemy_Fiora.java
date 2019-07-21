@@ -11,8 +11,8 @@ public class Enemy_Fiora extends Enemy {
     public Enemy_Fiora(Context context, int x, int y, Block[][] block, int order) {
         super(context, x, y, block, order);
         max_frame = 11;
-        attack_damage = 1;
-        hp = 500;
+        attack_damage = 30;
+        hp = 200;
         define();
     }
 

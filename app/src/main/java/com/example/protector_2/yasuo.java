@@ -11,8 +11,8 @@ public class yasuo extends Enemy {
     public yasuo(Context context, int x, int y, Block[][] block, int order) {
         super(context, x, y, block, order);
         max_frame = 5;
-        attack_damage = 1;
-        hp = 500;
+        attack_damage = 200;
+        hp = 200;
         define();
     }
 
