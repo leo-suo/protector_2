@@ -174,10 +174,11 @@ public class StartGame extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         GameView.number_of_tower = 0;
-        System.out.println("-----onDestroy -----");
+        System.out.println("YOU CANT BE HERE");
     }
 
     public void end(int is_win){
+        GameView.number_of_tower = 0;
         if(is_win == 1){
             Gold_num += 100;
         }
@@ -187,8 +188,8 @@ public class StartGame extends Activity {
         intent.putExtra("fight",fight_array);
         intent.putExtra("cost",cost_array);
         setResult(RESULT_OK,intent);
-        System.out.println("I am HERERER");
         finish();
+        System.out.println("-----onDestroy -----");
         System.exit(0);
 
     }
@@ -196,7 +197,14 @@ public class StartGame extends Activity {
     public void readfiles() {
         String data = "";
         StringBuffer sbuffer = new StringBuffer();
-        InputStream is = this.getResources().openRawResource(R.raw.mission1);
+        InputStream is;
+        if(Choose_level_Activity.which_map == 1){
+            is = this.getResources().openRawResource(R.raw.mission1);
+        }else if(Choose_level_Activity.which_map == 2){
+            is = this.getResources().openRawResource(R.raw.mission2);
+        }else{
+            is = this.getResources().openRawResource(R.raw.mission3);
+        }
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
         if (is != null) {

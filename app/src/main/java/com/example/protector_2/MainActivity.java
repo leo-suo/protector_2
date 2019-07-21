@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
-                        StartGame.class);
+                        Choose_level_Activity.class);
                 intent.putExtra("Gold",Gold_num);
                 intent.putExtra("tower",tower_array);
                 intent.putExtra("fight",fight_array);
