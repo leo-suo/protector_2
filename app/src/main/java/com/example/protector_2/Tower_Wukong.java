@@ -13,6 +13,7 @@ public class Tower_Wukong extends Tower {
         which_frame = 0;
         max_frame = 6;
         attack_damage = 5;
+        cost = 14;
         define();
 
     }

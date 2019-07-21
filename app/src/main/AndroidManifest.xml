@@ -20,16 +20,17 @@
         </activity>
         <activity
             android:name=".StartGame"
-            android:screenOrientation="landscape" ></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".bag_Activity"
-            android:screenOrientation="landscape" ></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".shop_Activity"
-            android:screenOrientation="landscape" ></activity>
-
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Summon_Activity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".Choose_level_Activity"
             android:screenOrientation="landscape" ></activity>
     </application>
 

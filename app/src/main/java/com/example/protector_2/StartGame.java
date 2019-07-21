@@ -3,6 +3,7 @@ package com.example.protector_2;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
@@ -21,6 +22,7 @@ import java.io.InputStreamReader;
 public class StartGame extends Activity {
     static public int mouse = 0;
     public int Gold_num;
+    public int Cost_num;
 
     GameView gv;
     public static String map_info;
@@ -31,6 +33,10 @@ public class StartGame extends Activity {
     //add comment
 
     int time = 0;
+
+    private boolean run = false;
+    private final Handler handler = new Handler();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,10 @@ public class StartGame extends Activity {
         Gold_num = intent.getIntExtra("Gold",-1);
         TextView t = findViewById(R.id.Gold_text);
         t.setText("Gold :" +String.valueOf(Gold_num));
+
+        Cost_num = GameView.cost;
+        TextView t_1 = findViewById(R.id.Cost_text);
+        t_1.setText("Cost :" +String.valueOf(Cost_num));
 
 
         // GameView
@@ -95,7 +105,25 @@ public class StartGame extends Activity {
                 mouse = 6;
             }
         });
+
+        run = true;
+        handler.postDelayed(task, 150);
     }
+
+    private final Runnable task = new Runnable() {
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            if (run) {
+                Cost_num = GameView.cost;
+                TextView t_1 = findViewById(R.id.Cost_text);
+                t_1.setText("Cost :" +String.valueOf(Cost_num));
+                handler.postDelayed(this, 150);
+            }
+        }
+    };
+
+
     @Override
     protected void onStart() {
         super.onStart();

@@ -13,7 +13,8 @@ public class Enemy_Fiora extends Enemy {
         max_frame = 11;
         attack_damage = 30;
         hp = 200;
-        define();
+        total_hp = 200;
+                define();
     }
 
     @Override

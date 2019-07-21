@@ -13,9 +13,13 @@ abstract public class Tower extends View{
     public int blockSize = 100;
     public Block[][] block;
     Bitmap[] bit_tower;
+    public int total_hp = 100;
+    public int is_Zhande = 0;
 
     public int attacking = 0;
     public Enemy who_i_attack;
+
+    public static int cost = 10;
 
     public int kind = 0;
     // if kind = 0, it means that we can put it into roads

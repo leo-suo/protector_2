@@ -13,6 +13,7 @@ public class Tower_Karthus extends Tower {
         which_frame = 0;
         max_frame = 8;
         attack_damage = 5;
+        cost = 13;
         define();
 
     }

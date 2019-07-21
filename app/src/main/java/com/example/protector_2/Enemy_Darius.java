@@ -13,7 +13,8 @@ public class Enemy_Darius extends Enemy {
         max_frame = 7;
         attack_damage = 10;
         hp = 400;
-        define();
+        total_hp = 400;
+                define();
     }
 
     @Override

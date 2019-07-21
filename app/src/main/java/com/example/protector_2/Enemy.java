@@ -45,6 +45,7 @@ abstract public class Enemy extends View implements Enemy_Interface{
 
     // yasuo game information
     int hp = 500;
+    int total_hp = 500;
     int has_update_dead_info = 0;
     public int attack_damage = 1;
 

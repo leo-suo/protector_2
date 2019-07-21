@@ -13,6 +13,7 @@ public class Tower_Tryndamere extends Tower {
         which_frame = 0;
         max_frame = 9;
         attack_damage = 5;
+        cost = 16;
         define();
 
     }

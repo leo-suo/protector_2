@@ -13,6 +13,7 @@ public class Enemy_Chitu extends Enemy {
         max_frame = 4;
         attack_damage = 1;
         hp = 500;
+        total_hp = 500;
         define();
     }
 

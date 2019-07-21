@@ -13,6 +13,7 @@ public class Enemy_Mordekaiser extends Enemy {
         max_frame = 6;
         attack_damage = 50;
         hp = 500;
+        total_hp = 500;
         define();
     }
 

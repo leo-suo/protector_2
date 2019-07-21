@@ -13,6 +13,7 @@ public class Tower_Garen extends Tower {
         which_frame = 0;
         max_frame = 29;
         attack_damage = 5;
+        cost = 12;
         define();
 
     }

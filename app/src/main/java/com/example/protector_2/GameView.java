@@ -32,6 +32,7 @@ public class GameView extends View{
 
     public static int total_hp = 5000;
 
+    public static int cost = 100;
     // enemy
     public Enemy yasuo_array[];
 
@@ -215,8 +216,32 @@ public class GameView extends View{
         // we want to the bird to be displayed at the centre of the screen
         for(int i = 0; i < number_of_yasuo; ++i){
             if(yasuo_array[i].ingame == 1 && yasuo_array[i].hp > 0){
+                Paint mPaint = new Paint();
+
+                mPaint.setColor(Color.BLACK);
+                mPaint.setStyle(Paint.Style.STROKE);
+                //mPaint.setStrokeWidth(10f);
+                int left = yasuo_array[i].yasuoX;
+                int top = yasuo_array[i].yasuoY;
+                int right = yasuo_array[i].yasuoX + 75;
+                int bottom = yasuo_array[i].yasuoY + 10;
+                Rect rect = new Rect(left, top, right, bottom);
+                canvas.drawRect(rect, mPaint);
+
+                mPaint.setColor(Color.RED);
+                mPaint.setStyle(Paint.Style.FILL);
+                //mPaint.setStrokeWidth(10f);
+                left = yasuo_array[i].yasuoX;
+                top = yasuo_array[i].yasuoY;
+                right = yasuo_array[i].yasuoX + 75 * (100 * yasuo_array[i].hp / yasuo_array[i].total_hp) / 100;
+                bottom = yasuo_array[i].yasuoY + 10;
+                rect = new Rect(left, top, right, bottom);
+                canvas.drawRect(rect, mPaint);
+
+                //canvas.drawRect(, yasuo_array[i].yasuoY, yasuo_array[i].yasuoX - 500, yasuo_array[i].yasuoY+50, mPaint);
+
                 canvas.drawBitmap(yasuo_array[i].yasuos[yasuo_array[i].yasuoFrame], yasuo_array[i].yasuoX,
-                        yasuo_array[i].yasuoY, null);
+                        yasuo_array[i].yasuoY, mPaint);
             }
         }
 
@@ -224,6 +249,30 @@ public class GameView extends View{
         for(int i = 0; i < number_of_tower; ++i){
             if(tower[i].ingame == 1 && !tower[i].is_dead()){
                 Paint paint = new Paint();
+                if(tower[i].is_Zhande == 1){
+                    Paint mPaint = new Paint();
+
+                    mPaint.setColor(Color.BLACK);
+                    mPaint.setStyle(Paint.Style.STROKE);
+                    //mPaint.setStrokeWidth(10f);
+                    int left = tower[i].towerX;
+                    int top = tower[i].towerY - 10;
+                    int right = tower[i].towerX + 75;
+                    int bottom = tower[i].towerY;
+                    Rect rect = new Rect(left, top, right, bottom);
+                    canvas.drawRect(rect, mPaint);
+
+                    mPaint.setColor(Color.GREEN);
+                    mPaint.setStyle(Paint.Style.FILL);
+                    //mPaint.setStrokeWidth(10f);
+                    left = tower[i].towerX;
+                    top = tower[i].towerY - 10;
+                    right = tower[i].towerX + 75 * (100 * tower[i].hp / tower[i].total_hp) / 100;
+                    bottom = tower[i].towerY ;
+                    rect = new Rect(left, top, right, bottom);
+                    canvas.drawRect(rect, mPaint);
+
+                }
                 canvas.drawBitmap(tower[i].bit_tower[tower[i].which_frame], tower[i].towerX,
                         tower[i].towerY, null);
                 tower[i].get_which_draw();
@@ -260,37 +309,55 @@ public class GameView extends View{
                 for (int i = 0; i < worldWidth; i++){
                     if(block[j][i].in_the_block(f_x, f_y)){
                         if (StartGame.mouse == 1 && block[j][i].kind == 0){
-                            Tower_Garen new_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
-                            tower[number_of_tower] = new_t;
-                            number_of_tower++;
+                            if(cost - Tower_Garen.cost >= 0){
+                                cost  = cost - Tower_Garen.cost;
+                                Tower_Garen new_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                                tower[number_of_tower] = new_t;
+                                number_of_tower++;
+                            }
                         }
                         if (StartGame.mouse == 2 && block[j][i].kind == 1){
                             // This tower can only put in the tower
-                            Tower_Diana new_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
-                            tower[number_of_tower] = new_t;
-                            number_of_tower++;
-                            block[j][i].have_tower = 1;
-                            block[j][i].block_tower = new_t;
+                            if(cost - Tower_Diana.cost >= 0) {
+                                cost = cost - Tower_Diana.cost;
+                                Tower_Diana new_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
+                                tower[number_of_tower] = new_t;
+                                number_of_tower++;
+                                block[j][i].have_tower = 1;
+                                block[j][i].block_tower = new_t;
+                            }
                         }
                         if (StartGame.mouse == 3 && block[j][i].kind == 0){
-                            Tower_Karthus new_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
-                            tower[number_of_tower] = new_t;
-                            number_of_tower++;
+                            if(cost - Tower_Karthus.cost >= 0) {
+                                cost = cost - Tower_Karthus.cost;
+                                Tower_Karthus new_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
+                                tower[number_of_tower] = new_t;
+                                number_of_tower++;
+                            }
                         }
                         if (StartGame.mouse == 4 && block[j][i].kind == 0){
-                            Tower_Mord new_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
-                            tower[number_of_tower] = new_t;
-                            number_of_tower++;
+                            if(cost - Tower_Mord.cost >= 0) {
+                                cost = cost - Tower_Mord.cost;
+                                Tower_Mord new_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
+                                tower[number_of_tower] = new_t;
+                                number_of_tower++;
+                            }
                         }
                         if (StartGame.mouse == 5 && block[j][i].kind == 0){
-                            Tower_Kassadin new_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
-                            tower[number_of_tower] = new_t;
-                            number_of_tower++;
+                            if(cost - Tower_Kassadin.cost >= 0) {
+                                cost = cost - Tower_Kassadin.cost;
+                                Tower_Kassadin new_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
+                                tower[number_of_tower] = new_t;
+                                number_of_tower++;
+                            }
                         }
                         if (StartGame.mouse == 6 && block[j][i].kind == 0){
-                            Tower_Tryndamere new_t = new Tower_Tryndamere( context, block, block[j][i].x, block[j][i].y);
-                            tower[number_of_tower] = new_t;
-                            number_of_tower++;
+                            if(cost - Tower_Tryndamere.cost >= 0) {
+                                cost = cost - Tower_Tryndamere.cost;
+                                Tower_Tryndamere new_t = new Tower_Tryndamere(context, block, block[j][i].x, block[j][i].y);
+                                tower[number_of_tower] = new_t;
+                                number_of_tower++;
+                            }
                         }
                     }
                 }

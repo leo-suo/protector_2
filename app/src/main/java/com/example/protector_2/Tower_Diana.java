@@ -14,6 +14,9 @@ public class Tower_Diana extends Tower {
         max_frame = 30;
         attack_damage = 1;
         hp = 20000;
+        total_hp = 20000;
+        is_Zhande = 1;
+        cost = 11;
         define();
 
     }

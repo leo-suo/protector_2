@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Choose_level_Activity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button3"
+        android:layout_below="@+id/btn_1"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="100dp"
+            android:orientation="horizontal">
+
+             <Button
+                 android:id="@+id/Game_1"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="Level 1" />
+            <Button
+                android:id="@+id/Game_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_1"
+                android:layout_marginTop="10dp"
+                android:text="level 2" />
+            <Button
+                android:id="@+id/Game_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_2"
+                android:layout_marginTop="10dp"
+                android:text="level 3" />
+            <Button
+                android:id="@+id/Game_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_3"
+                android:layout_marginTop="10dp"
+                android:text="level 4" />
+            <Button
+                android:id="@+id/Game_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_4"
+                android:layout_marginTop="10dp"
+                android:text="level 5" />
+            <Button
+                android:id="@+id/Game_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_5"
+                android:layout_marginTop="10dp"
+                android:text="level 6" />
+            <Button
+                android:id="@+id/Game_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_6"
+                android:layout_marginTop="10dp"
+                android:text="level 7" />
+            <Button
+                android:id="@+id/Game_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_7"
+                android:layout_marginTop="10dp"
+                android:text="level 8" />
+            <Button
+                android:id="@+id/Game_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_8"
+                android:layout_marginTop="10dp"
+                android:text="level 9" />
+            <Button
+                android:id="@+id/Game_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Game_9"
+                android:layout_marginTop="10dp"
+                android:text="level 10" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:text="Back" />
+
+</RelativeLayout>

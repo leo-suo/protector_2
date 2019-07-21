@@ -13,6 +13,7 @@ public class Enemy_Lee extends Enemy {
         max_frame = 5;
         attack_damage = 25;
         hp = 250;
+        total_hp = 250;
         define();
     }
 

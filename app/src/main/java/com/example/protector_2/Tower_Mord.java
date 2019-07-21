@@ -13,6 +13,7 @@ public class Tower_Mord extends Tower {
         which_frame = 0;
         max_frame = 18;
         attack_damage = 5;
+        cost = 20;
         define();
 
     }
