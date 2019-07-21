@@ -27,7 +27,7 @@ public class bag_Activity extends AppCompatActivity {
     public int [] tower_price = {1,2,3,4,5,6,7,8,9,10};
 
     //show numbers of towers you have
-    public int [] tower_owns = {1,1,1,1,1,1,1,1,1,1};
+    public int [] tower_owns = {10,1,1,1,1,1,1,1,1,1};
     public int [] text_id = {R.id.num_tower1,R.id.num_tower2,R.id.num_tower3,R.id.num_tower4,R.id.num_tower5,R.id.num_tower6,R.id.num_tower7,R.id.num_tower8,R.id.num_tower9,R.id.num_tower10};
 
     public String gold_info;
@@ -44,10 +44,10 @@ public class bag_Activity extends AppCompatActivity {
         }
         return count;
     }
-    public static int[] deleteArrayCount(int v, int[] array)//删除数组中v的值
+    public static int[] deleteArrayCount(int v, int[] array)
     {
         int counts = getCountFromArray(v, array);
-        int[] re_array = new int[array.length - counts];//不知道要删除几个的情况下
+        int[] re_array = new int[array.length - counts];
         int index = 0;
         for (int i : array) {
             if (i != v) {
@@ -70,13 +70,9 @@ public class bag_Activity extends AppCompatActivity {
         num_gold = intent.getIntExtra("Gold",-1);
 
 
-        readfiles();
-        ImageView tower1 = findViewById(R.id.tower1);
-        ImageView tower2 = findViewById(R.id.tower2);
-        ImageView tower3 = findViewById(R.id.tower3);
-        ImageView tower4 = findViewById(R.id.tower4);
-        ImageView [] towers  ={tower1,tower2,tower3,tower4};
-        //show_tower(your_own_tower,towers);
+       // readfiles();
+       // show_tower(your_own_tower);
+        show(tower_owns);
         TextView t = findViewById(R.id.your_gold);
         t.setText("Your Gold: " + String.valueOf(num_gold));
 
@@ -116,7 +112,21 @@ public class bag_Activity extends AppCompatActivity {
 
     }
 
-    public void show_tower(int []your_own_tower, ImageView [] towers){
+
+    public void show(int []tower_own){
+        for(int i = 0;i<tower_own.length;i++){
+            if(tower_own[i] ==0){
+                ImageView tower = findViewById(tower_id[i]);
+                ColorMatrix matrix = new ColorMatrix();
+                matrix.setSaturation(0);
+                ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+                tower.setColorFilter(filter);
+
+            }
+        }
+    }
+
+    public void show_tower(int []your_own_tower){
         int length = your_own_tower.length;
 
         int []not_own_tower = null;
@@ -128,10 +138,12 @@ public class bag_Activity extends AppCompatActivity {
 
         for(int i=0;i<not_own_tower.length;i++){
             int num = not_own_tower[i]-1;
+            ImageView tower = findViewById(tower_id[num]);
+
             ColorMatrix matrix = new ColorMatrix();
             matrix.setSaturation(0);
             ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-            towers[num].setColorFilter(filter);
+            tower.setColorFilter(filter);
         }
 
     }
@@ -171,6 +183,7 @@ public class bag_Activity extends AppCompatActivity {
                     tower_owns[i] -=1;
                     TextView x = findViewById(text_id[i]);
                     x.setText("x"+tower_owns[i]);
+                    show(tower_owns);
                 } else
                 {
                     Context context = getApplicationContext();
