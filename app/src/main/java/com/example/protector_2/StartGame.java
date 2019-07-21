@@ -3,6 +3,7 @@ package com.example.protector_2;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
@@ -29,6 +30,10 @@ public class StartGame extends Activity {
     public static String map_info;
 
     Button but1, but2, but3, but4, but5, but6;
+    private boolean run = false;
+    private final Handler handler = new Handler();
+
+    int cost = 100;
 
     int which_map;
     //add comment
@@ -49,6 +54,7 @@ public class StartGame extends Activity {
         tower_array = intent.getIntArrayExtra("tower");
         TextView t = findViewById(R.id.Gold_text);
         t.setText("Gold :" +String.valueOf(Gold_num));
+        int cost = 100;
 
 
         fight_array = intent.getIntArrayExtra("fight");
@@ -110,7 +116,27 @@ public class StartGame extends Activity {
                 mouse = 6;
             }
         });
+
+        TextView t_1 = findViewById(R.id.Cost_text);
+        t_1.setText("Cost: " + String.valueOf(cost));
+        cost = GameView.cost;
+        run = true;
+        handler.postDelayed(task, 150);
+        t_1.setText("Cost: " + String.valueOf(cost));
     }
+
+    private final Runnable task = new Runnable() {
+        @Override
+        public void run() {
+            if (run) {
+                cost = GameView.cost;
+                TextView t_1 = findViewById(R.id.Cost_text);
+                t_1.setText("Cost: " + String.valueOf(cost));
+                handler.postDelayed(this, 150);
+            }
+        }
+    };
+
     @Override
     protected void onStart() {
         super.onStart();
