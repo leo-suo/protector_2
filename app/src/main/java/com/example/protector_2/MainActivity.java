@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     public int Exp;
     public int Ap;
     public int [] tower_array;
+    public int [] fight_array;
+    public int [] cost_array;
 
     public static final String FILE = "player_info.txt";
 
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         tower_array = new int []{1,0,3,0,5,0,7,0,9,0};
+        fight_array = new int []{0,0,0,0,0,0,0,0,0,0};
+        cost_array = new int[]{15,15,15,15,15,10,10,10,10,10};
 
         for(int i = 0; i < 10; i++){
             System.out.println(tower_array[i]);
@@ -55,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                         StartGame.class);
                 intent.putExtra("Gold",Gold_num);
                 intent.putExtra("tower",tower_array);
+                intent.putExtra("fight",fight_array);
+                intent.putExtra("cost",cost_array);
                 startActivityForResult(intent,0);
 
             }
@@ -69,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                         bag_Activity.class);
                 intent.putExtra("Gold",Gold_num);
                 intent.putExtra("tower",tower_array);
+                intent.putExtra("fight",fight_array);
+                intent.putExtra("cost",cost_array);
                 startActivityForResult(intent,0);
 
             }
@@ -119,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestcode,resultcode,intent);
         Gold_num = intent.getIntExtra("Gold",-1);
         tower_array = intent.getIntArrayExtra("tower");
+        fight_array = intent.getIntArrayExtra("fight");
+        cost_array = intent.getIntArrayExtra("cost");
+
     }
 
 

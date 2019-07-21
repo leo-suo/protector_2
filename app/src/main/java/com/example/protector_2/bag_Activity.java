@@ -197,6 +197,10 @@ public class bag_Activity extends AppCompatActivity {
 
 
         if(back == true){
+            for(int i =0;i<fight_list.length;i++){
+                System.out.println("You are in Bag");
+                System.out.println(fight_list[i]);
+            }
             Intent intent = new Intent();
             intent.putExtra("Gold",num_gold);
             intent.putExtra("tower",tower_owns);

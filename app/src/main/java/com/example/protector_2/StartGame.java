@@ -22,6 +22,8 @@ public class StartGame extends Activity {
     static public int mouse = 0;
     public int Gold_num;
     public int[] tower_array;
+    public int[] cost_array;
+    public int[] fight_array;
 
     GameView gv;
     public static String map_info;
@@ -49,8 +51,13 @@ public class StartGame extends Activity {
         t.setText("Gold :" +String.valueOf(Gold_num));
 
 
-        for(int i = 0; i < 10; i++){
-            System.out.println(tower_array[i]);
+        fight_array = intent.getIntArrayExtra("fight");
+        cost_array = intent.getIntArrayExtra("cost");
+
+
+        for(int i = 0; i < fight_array.length; i++){
+            System.out.println("You are in game");
+            System.out.println(fight_array[i]);
         }
 
 
@@ -151,6 +158,8 @@ public class StartGame extends Activity {
         Intent intent = new Intent();
         intent.putExtra("Gold",Gold_num);
         intent.putExtra("tower",tower_array);
+        intent.putExtra("fight",fight_array);
+        intent.putExtra("cost",cost_array);
         setResult(RESULT_OK,intent);
         System.out.println("I am HERERER");
         finish();
