@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 public class StartGame extends Activity {
     static public int mouse = 0;
     public int Gold_num;
+    public int[] tower_array;
 
     GameView gv;
     public static String map_info;
@@ -43,10 +44,17 @@ public class StartGame extends Activity {
 
         Intent intent = getIntent();
         Gold_num = intent.getIntExtra("Gold",-1);
+        tower_array = intent.getIntArrayExtra("tower");
         TextView t = findViewById(R.id.Gold_text);
         t.setText("Gold :" +String.valueOf(Gold_num));
 
 
+        for(int i = 0; i < 10; i++){
+            System.out.println(tower_array[i]);
+        }
+
+
+        
         // GameView
         LinearLayout root = (LinearLayout)findViewById(R.id.root);
         gv = new GameView(this);
@@ -142,7 +150,9 @@ public class StartGame extends Activity {
         }
         Intent intent = new Intent();
         intent.putExtra("Gold",Gold_num);
+        intent.putExtra("tower",tower_array);
         setResult(RESULT_OK,intent);
+        System.out.println("I am HERERER");
         finish();
         System.exit(0);
 
