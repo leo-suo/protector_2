@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.graphics.*;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -23,8 +21,8 @@ import java.io.InputStreamReader;
 public class bag_Activity extends AppCompatActivity {
     public String bag_info;
     public int [] your_own_tower;
-    public int [] all_towers  = {1,2,3,4};
     public int [] sell_id = {R.id.sell1,R.id.sell2,R.id.sell3,R.id.sell4,R.id.sell5,R.id.sell6,R.id.sell7,R.id.sell8,R.id.sell9,R.id.sell10};
+    public int [] upgrade_id ={R.id.Upgrade1,R.id.Upgrade2,R.id.Upgrade3,R.id.Upgrade4,R.id.Upgrade5,R.id.Upgrade6,R.id.Upgrade7,R.id.Upgrade8,R.id.Upgrade9,R.id.Upgrade10};
     public int [] tower_id = {R.id.tower1, R.id.tower2, R.id.tower3,R.id.tower4,R.id.tower5,R.id.tower6,R.id.tower7,R.id.tower8,R.id.tower9,R.id.tower10};
     public int [] tower_price = {1,2,3,4,5,6,7,8,9,10};
 
@@ -35,7 +33,7 @@ public class bag_Activity extends AppCompatActivity {
     public int num_gold;
 
     public int []check_id= {R.id.checkBox,R.id.checkBox2,R.id.checkBox3,R.id.checkBox4,R.id.checkBox5,R.id.checkBox6,R.id.checkBox7,R.id.checkBox8,R.id.checkBox9,R.id.checkBox10};
-
+    public int [] cost =  {15,15,15,15,15,10,10,10,10,10};
 
 
     public static int getCountFromArray(int v, int[] array) {
@@ -83,7 +81,7 @@ public class bag_Activity extends AppCompatActivity {
         //show numbers of tower you have
         for(int i = 0; i< text_id.length;i++){
             TextView x = findViewById(text_id[i]);
-            x.setText("x"+ tower_owns[i]);
+            x.setText("x"+ tower_owns[i]+ "  "+"Cost: " + cost[i]);
         }
 
 
@@ -137,27 +135,6 @@ public class bag_Activity extends AppCompatActivity {
         }
     }
 
-    public void show_tower(int []your_own_tower){
-        int length = your_own_tower.length;
-
-        int []not_own_tower = null;
-        for(int i = 0; i < length; i++){
-            int num = your_own_tower[i];
-            not_own_tower = (deleteArrayCount(num,all_towers));
-        }
-
-
-        for(int i=0;i<not_own_tower.length;i++){
-            int num = not_own_tower[i]-1;
-            ImageView tower = findViewById(tower_id[num]);
-
-            ColorMatrix matrix = new ColorMatrix();
-            matrix.setSaturation(0);
-            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-            tower.setColorFilter(filter);
-        }
-
-    }
 
 
     @Override
@@ -167,7 +144,7 @@ public class bag_Activity extends AppCompatActivity {
         tower_owns = intent.getIntArrayExtra("tower");
         for(int i = 0; i< text_id.length;i++){
             TextView x = findViewById(text_id[i]);
-            x.setText("x"+ tower_owns[i]);
+            x.setText("x"+ tower_owns[i]+ "  "+"Cost: " + cost[i]);
         }
         show(tower_owns);
         TextView t = findViewById(R.id.your_gold);
@@ -225,6 +202,7 @@ public class bag_Activity extends AppCompatActivity {
             intent.putExtra("Gold",num_gold);
             intent.putExtra("tower",tower_owns);
             intent.putExtra("fight",fight_list);
+            intent.putExtra("cost",cost);
             setResult(RESULT_OK,intent);
             finish();
         }
@@ -242,7 +220,7 @@ public class bag_Activity extends AppCompatActivity {
                     //update the tower
                     tower_owns[i] -=1;
                     TextView x = findViewById(text_id[i]);
-                    x.setText("x"+tower_owns[i]);
+                    x.setText("x"+ tower_owns[i]+ "  "+"Cost: " + cost[i]);
                     show(tower_owns);
                 } else
                 {
@@ -252,6 +230,40 @@ public class bag_Activity extends AppCompatActivity {
                     Toast.makeText(context,text,duration).show();
                 }
 
+            }
+        }
+
+    }
+
+    public void onUpgradeClick(View view){
+        for(int i =0;i<tower_id.length;i++){
+            if(upgrade_id[i]== view.getId()){
+                if(tower_owns[i] >2){
+                    if(num_gold >10){
+                        num_gold -=10;
+                        tower_owns[i] -=1;
+                        cost[i] -=5;
+
+                        TextView t = findViewById(text_id[i]);
+                        t.setText("x"+ tower_owns[i]+ "  "+"Cost: " + cost[i]);
+
+                        Context context = getApplicationContext();
+                        CharSequence text ="Upgrading successfully! Cost reduce!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast.makeText(context,text,duration).show();
+                    } else{
+                        Context context = getApplicationContext();
+                        CharSequence text ="Upgrading your tower costs 10$";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast.makeText(context,text,duration).show();
+
+                    }
+                } else{
+                    Context context = getApplicationContext();
+                    CharSequence text ="Upgrading your tower costs 2 towers";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast.makeText(context,text,duration).show();
+                }
             }
         }
 
