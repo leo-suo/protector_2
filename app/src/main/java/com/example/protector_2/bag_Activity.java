@@ -23,7 +23,7 @@ public class bag_Activity extends AppCompatActivity {
     public int num_towers = 4;
     public int [] all_towers  = {1,2,3,4};
     public int [] sell_id = {R.id.sell1,R.id.sell2,R.id.sell3,R.id.sell4,R.id.sell5,R.id.sell6,R.id.sell7,R.id.sell8,R.id.sell9,R.id.sell10};
-    public int [] tower_id = {R.id.tower1, R.id.tower2, R.id.tower3,R.id.tower4,R.id.tower5,R.id.tower6,R.id.tower7,R.id.tower8,R.id.tower9,R.id.sell10};
+    public int [] tower_id = {R.id.tower1, R.id.tower2, R.id.tower3,R.id.tower4,R.id.tower5,R.id.tower6,R.id.tower7,R.id.tower8,R.id.tower9,R.id.tower10};
     public int [] tower_price = {1,2,3,4,5,6,7,8,9,10};
 
     //show numbers of towers you have
@@ -68,6 +68,7 @@ public class bag_Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         num_gold = intent.getIntExtra("Gold",-1);
+        tower_owns = intent.getIntArrayExtra("tower");
 
 
        // readfiles();
@@ -123,6 +124,10 @@ public class bag_Activity extends AppCompatActivity {
                 tower.setColorFilter(filter);
 
             }
+            else{
+                ImageView tower = findViewById(tower_id[i]);
+                tower.setColorFilter(null);
+            }
         }
     }
 
@@ -153,6 +158,12 @@ public class bag_Activity extends AppCompatActivity {
     protected void onActivityResult(int requestcode, int resultcode, Intent intent){
         super.onActivityResult(requestcode,resultcode,intent);
         num_gold = intent.getIntExtra("Gold",-1);
+        tower_owns = intent.getIntArrayExtra("tower");
+        for(int i = 0; i< text_id.length;i++){
+            TextView x = findViewById(text_id[i]);
+            x.setText("x"+ tower_owns[i]);
+        }
+        show(tower_owns);
         TextView t = findViewById(R.id.your_gold);
         t.setText("Your Gold " + num_gold);
     }
@@ -160,6 +171,7 @@ public class bag_Activity extends AppCompatActivity {
     public void onBuyClick(View view){
         Intent intent = new Intent(bag_Activity.this,shop_Activity.class);
         intent.putExtra("Gold",num_gold);
+        intent.putExtra("tower",tower_owns);
         startActivityForResult(intent,0);
     }
 
@@ -167,6 +179,7 @@ public class bag_Activity extends AppCompatActivity {
     public void onBackClick(View view){
         Intent intent = new Intent();
         intent.putExtra("Gold",num_gold);
+        intent.putExtra("tower",tower_owns);
         setResult(RESULT_OK,intent);
         finish();
     }
