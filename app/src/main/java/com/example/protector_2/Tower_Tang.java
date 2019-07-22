@@ -8,7 +8,7 @@ public class Tower_Tang extends Tower{
     public Tower_Tang(Context context, Block[][] block, int x, int y){
         super(context, block, x, y);
         kind = 1;
-        attack_range = 200;
+        attack_range = 300;
         ingame = 1;
         which_frame = 0;
         max_frame = 11;

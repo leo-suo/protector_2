@@ -8,11 +8,11 @@ public class Tower_Kassadin extends Tower {
     public Tower_Kassadin(Context context, Block[][] block, int x, int y){
         super(context, block, x, y);
         kind = 1;
-        attack_range = 200;
+        attack_range = 250;
         ingame = 1;
         which_frame = 0;
         max_frame = 15;
-        attack_damage = 5;
+        attack_damage = 6;
         cost = 14;
         define();
 

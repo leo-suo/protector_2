@@ -74,7 +74,7 @@ public class shop_Activity extends AppCompatActivity {
         int p = 0;
         for(int i = 0; i < tower_id.length; i++){
             if(tower_id[i] == view.getId()){
-                p = (i+1)*10;
+                p = (i+1)*50;
                 tower_own[i]+=1;
             }
         }

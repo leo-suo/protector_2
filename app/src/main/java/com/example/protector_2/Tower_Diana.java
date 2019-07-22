@@ -12,7 +12,7 @@ public class Tower_Diana extends Tower {
         ingame = 1;
         which_frame = 0;
         max_frame = 30;
-        attack_damage = 1;
+        attack_damage = 0;
         hp = 20000;
         total_hp = 20000;
         is_Zhande = 1;
