@@ -198,8 +198,22 @@ public class StartGame extends Activity {
             is = this.getResources().openRawResource(R.raw.mission1);
         }else if(Choose_level_Activity.which_map == 2){
             is = this.getResources().openRawResource(R.raw.mission2);
-        }else{
+        }else if(Choose_level_Activity.which_map == 3){
             is = this.getResources().openRawResource(R.raw.mission3);
+        }else if(Choose_level_Activity.which_map == 4){
+            is = this.getResources().openRawResource(R.raw.mission4);
+        }else if(Choose_level_Activity.which_map == 5){
+            is = this.getResources().openRawResource(R.raw.mission5);
+        }else if(Choose_level_Activity.which_map == 6){
+            is = this.getResources().openRawResource(R.raw.mission6);
+        }else if(Choose_level_Activity.which_map == 7){
+            is = this.getResources().openRawResource(R.raw.mission7);
+        }else if(Choose_level_Activity.which_map == 8){
+            is = this.getResources().openRawResource(R.raw.mission8);
+        }else if(Choose_level_Activity.which_map == 9){
+            is = this.getResources().openRawResource(R.raw.mission9);
+        }else{
+            is = this.getResources().openRawResource(R.raw.mission10);
         }
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 

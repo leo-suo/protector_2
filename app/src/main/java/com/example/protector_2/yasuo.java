@@ -13,6 +13,7 @@ public class yasuo extends Enemy {
         max_frame = 5;
         attack_damage = 200;
         hp = 200;
+        total_hp = 200;
         define();
     }
 

@@ -12,13 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
 import android.graphics.*;
-import android.widget.Button;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-import java.util.Random;
-import java.util.jar.Attributes;
 
 public class GameView extends View{
     int i = StartGame.mouse;
@@ -82,10 +75,7 @@ public class GameView extends View{
     }
 
     public GameView(Context context){
-
         super(context);
-
-
         index = new String[6];
         for(int i = 0; i < 10; i++){
             if(StartGame.fight_array[i] == 1){
@@ -142,13 +132,13 @@ public class GameView extends View{
         for(int y = 0; y < worldHeight; y++){
             for (int x = 0; x < worldWidth; x++){
 
-                block[y][x] = new Block(x * blockSize,y * blockSize + (blockSize / 2),
+                block[y][x] = new Block(x * blockSize,y * blockSize + blockSize / 2,
                         map_info.charAt(13 * y + x) - '0',
                             1);
                 if(block[y][x].groundId == 0){
-                    map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.tilesetground);
+                    map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_4);
                 }else{
-                    map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.tilesetair);
+                    map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_3);
                 }
             }
         }
@@ -202,7 +192,7 @@ public class GameView extends View{
 
 
         // bird
-        background = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+        background = BitmapFactory.decodeResource(getResources(), R.drawable.star_sky);
 
         display = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
         point = new Point();
@@ -231,7 +221,7 @@ public class GameView extends View{
         // we will draw our view here
 
         // Draw the background on the canvas
-        canvas.drawBitmap(background,null,rect,null);//fixed
+        //canvas.drawBitmap(background,null,rect,null);//fixed
         for(int y = 0; y < block.length; y++) {
             for (int x = 0; x < block[0].length; x++) {
                 canvas.drawBitmap(map[y][x],block[y][x].x,block[y][x].y,null);
