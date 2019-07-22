@@ -116,9 +116,9 @@
                         android:id="@+id/t1_price"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="cost: 10 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 50 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t1_bt"
@@ -149,9 +149,9 @@
                         android:id="@+id/t2_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 20 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 200 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t2_bt"
@@ -183,9 +183,9 @@
                         android:id="@+id/t3_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 30 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 150 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t3_bt"
@@ -221,9 +221,9 @@
                         android:id="@+id/t4_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 40 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 200G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t4_bt"
@@ -255,9 +255,9 @@
                         android:id="@+id/t5_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 50 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 250 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t5_bt"
@@ -294,9 +294,9 @@
                         android:id="@+id/t6_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 60 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 300 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t6_bt"
@@ -328,9 +328,9 @@
                         android:id="@+id/t7_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 70 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 350 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t7_bt"
@@ -362,9 +362,9 @@
                         android:id="@+id/t8_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 80 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 400 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t8_bt"
@@ -396,9 +396,9 @@
                         android:id="@+id/t9_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 90 G"
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 450 G"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t9_bt"
@@ -430,10 +430,10 @@
                         android:id="@+id/t10_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 100 G"
-                        
-                        android:textColor="#FFFFFF"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:text="cost: 500 G"
+
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/t10_bt"
