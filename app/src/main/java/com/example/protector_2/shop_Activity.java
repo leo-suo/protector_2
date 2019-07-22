@@ -2,6 +2,7 @@ package com.example.protector_2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,6 +46,14 @@ public class shop_Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        gold_num = data.getIntExtra("Gold",-8);
+        tower_own = data.getIntArrayExtra("tower");
+
+    }
+
     public void onBackButtonClick(View View){
         Intent intent = new Intent();
         intent.putExtra("Gold",gold_num);
@@ -56,7 +65,9 @@ public class shop_Activity extends AppCompatActivity {
     public void onSummonClick(View View){
         Intent intent = new Intent(shop_Activity.this,
                 Summon_Activity.class);
-        startActivity(intent);
+        intent.putExtra("Gold",gold_num);
+        intent.putExtra("tower",tower_own);
+        startActivityForResult(intent,0);
     }
 
     public void onPurchaseClick(View view){
