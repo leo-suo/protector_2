@@ -22,9 +22,9 @@ import java.io.InputStreamReader;
 public class StartGame extends Activity {
     static public int mouse = 0;
     public int Gold_num;
-    public int[] tower_array;
-    public int[] cost_array;
-    public int[] fight_array;
+    public  int[] tower_array;
+    public static int[] cost_array;
+    public static int[] fight_array;
 
     GameView gv;
     public static String map_info;
@@ -61,10 +61,6 @@ public class StartGame extends Activity {
         cost_array = intent.getIntArrayExtra("cost");
 
 
-        for(int i = 0; i < fight_array.length; i++){
-            System.out.println("You are in game");
-            System.out.println(fight_array[i]);
-        }
 
 
 

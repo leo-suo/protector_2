@@ -207,7 +207,6 @@ public class Choose_level_Activity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         GameView.number_of_tower = 0;
-        System.out.println("YOU are in choose now");
     }
 
 
