@@ -8,7 +8,7 @@ public class Tower_Diana extends Tower {
     public Tower_Diana(Context context, Block[][] block, int x, int y){
         super(context, block, x, y);
         kind = 1;
-        attack_range = 50;
+        attack_range = 0;
         ingame = 1;
         which_frame = 0;
         max_frame = 30;

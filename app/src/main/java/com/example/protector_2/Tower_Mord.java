@@ -12,7 +12,7 @@ public class Tower_Mord extends Tower {
         ingame = 1;
         which_frame = 0;
         max_frame = 18;
-        attack_damage = 5;
+        attack_damage = 3;
         cost = 20;
         define();
 

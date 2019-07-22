@@ -26,13 +26,13 @@ public class bag_Activity extends AppCompatActivity {
     public int [] tower_price = {1,2,3,4,5,6,7,8,9,10};
 
     //show numbers of towers you have
-    public int [] tower_owns = {10,1,1,1,1,1,1,1,1,1};
+    public int [] tower_owns = {1,1,1,1,1,1,1,1,1,1};
     public int [] text_id = {R.id.num_tower1,R.id.num_tower2,R.id.num_tower3,R.id.num_tower4,R.id.num_tower5,R.id.num_tower6,R.id.num_tower7,R.id.num_tower8,R.id.num_tower9,R.id.num_tower10};
     public String gold_info;
     public int num_gold;
 
     public int []check_id= {R.id.checkBox,R.id.checkBox2,R.id.checkBox3,R.id.checkBox4,R.id.checkBox5,R.id.checkBox6,R.id.checkBox7,R.id.checkBox8,R.id.checkBox9,R.id.checkBox10};
-    public int [] cost =  {15,15,15,15,15,10,10,10,10,10};
+    public int [] cost = {25,25,10,25,25,25,30,30,35,30};
 
 
     public static int getCountFromArray(int v, int[] array) {
@@ -243,7 +243,7 @@ public class bag_Activity extends AppCompatActivity {
                     if(num_gold >=10){
                         num_gold -=10;
                         tower_owns[i] -=1;
-                        cost[i] -=5;
+                        cost[i] -=1;
                         if(cost[i]<=0){
                             cost[i] = 0;
                         }

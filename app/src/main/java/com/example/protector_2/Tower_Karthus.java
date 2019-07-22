@@ -12,7 +12,7 @@ public class Tower_Karthus extends Tower {
         ingame = 1;
         which_frame = 0;
         max_frame = 8;
-        attack_damage = 5;
+        attack_damage = 6;
         cost = 13;
         define();
 

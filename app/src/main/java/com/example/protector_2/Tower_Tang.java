@@ -12,7 +12,7 @@ public class Tower_Tang extends Tower{
         ingame = 1;
         which_frame = 0;
         max_frame = 11;
-        attack_damage = 5;
+        attack_damage = 7;
         cost = 14;
         define();
 

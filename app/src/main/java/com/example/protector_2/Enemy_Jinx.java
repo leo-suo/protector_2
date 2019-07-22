@@ -12,8 +12,8 @@ public class Enemy_Jinx extends Enemy {
         super(context, x, y, block, order);
         max_frame = 9;
         attack_damage = 50;
-        hp = 100;
-        total_hp = 100;
+        hp = 150;
+        total_hp = 150;
         define();
     }
 

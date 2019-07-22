@@ -1,6 +1,7 @@
 package com.example.protector_2;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -175,7 +177,7 @@ public class StartGame extends Activity {
 
     public void end(int is_win){
         GameView.number_of_tower = 0;
-        if(is_win == 1){
+        if(is_win == 1) {
             Gold_num += 100;
         }
         Intent intent = new Intent();
