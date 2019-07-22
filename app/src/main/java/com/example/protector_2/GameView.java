@@ -136,9 +136,21 @@ public class GameView extends View{
                         map_info.charAt(13 * y + x) - '0',
                             1);
                 if(block[y][x].groundId == 0){
-                    map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_3);
+                    if(Choose_level_Activity.which_map % 3 == 0){
+                        map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_3);
+                    }else if(Choose_level_Activity.which_map % 3 == 1){
+                        map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_3);
+                    }else if(Choose_level_Activity.which_map % 3 == 2){
+                        map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.b);
+                    }
                 }else{
-                    map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_4);
+                    if(Choose_level_Activity.which_map % 3 == 0){
+                        map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_4);
+                    }else if(Choose_level_Activity.which_map % 3 == 1){
+                        map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_5);
+                    }else if(Choose_level_Activity.which_map % 3 == 2){
+                        map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_4);
+                    }
                 }
             }
         }

@@ -149,7 +149,7 @@
                         android:id="@+id/t2_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="cost: 200 G"
+                        android:text="cost: 100 G"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="#FFFFFF" />
 
