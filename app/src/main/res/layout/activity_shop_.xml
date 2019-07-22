@@ -116,6 +116,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="cost: 10 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -147,6 +148,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 20 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -178,6 +180,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 30 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -209,6 +212,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 40 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -240,6 +244,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 50 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -276,6 +281,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 60 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -307,6 +313,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 70 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -338,6 +345,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 80 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -369,6 +377,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 90 G"
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button
@@ -399,6 +408,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="cost: 100 G"
+                        
+                        android:textColor="#FFFFFF"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     <Button

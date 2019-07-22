@@ -32,7 +32,7 @@ public class bag_Activity extends AppCompatActivity {
     public int num_gold;
 
     public int []check_id= {R.id.checkBox,R.id.checkBox2,R.id.checkBox3,R.id.checkBox4,R.id.checkBox5,R.id.checkBox6,R.id.checkBox7,R.id.checkBox8,R.id.checkBox9,R.id.checkBox10};
-    public int [] cost = {25,25,10,25,25,25,30,30,35,30};
+    public int [] cost = {20,25,10,25,25,25,30,30,35,30};
 
 
     public static int getCountFromArray(int v, int[] array) {
@@ -252,6 +252,7 @@ public class bag_Activity extends AppCompatActivity {
                         t.setText("x"+ tower_owns[i]+ "  "+"Cost: " + cost[i]);
                         TextView x = findViewById(R.id.your_gold);
                         x.setText("Your Gold " + num_gold);
+
 
                         Context context = getApplicationContext();
                         CharSequence text ="Upgrading successfully! Cost reduce!";

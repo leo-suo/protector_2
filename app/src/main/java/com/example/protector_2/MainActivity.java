@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         tower_array = new int []{1,1,1,1,1,1,1,0,0,0};
         fight_array = new int []{0,0,0,0,0,0,0,0,0,0};
-        cost_array = new int[]{25,25,10,25,25,25,30,30,35,30};
+        cost_array = new int[]{20,25,10,25,25,25,30,30,35,30};
         play = findViewById(R.id.play);
         play.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -136,9 +136,9 @@ public class GameView extends View{
                         map_info.charAt(13 * y + x) - '0',
                             1);
                 if(block[y][x].groundId == 0){
-                    map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_4);
-                }else{
                     map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_3);
+                }else{
+                    map[y][x] = BitmapFactory.decodeResource(getResources(),R.drawable.bg_4);
                 }
             }
         }
