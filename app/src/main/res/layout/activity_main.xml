@@ -20,6 +20,7 @@
         android:layout_marginBottom="50dp"
         android:layout_marginRight="100dp"
         android:text="play"
+        android:background="@drawable/button_shape"
         />
 
     <Button
@@ -30,7 +31,8 @@
         android:layout_marginLeft="247dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
-        android:text="shop" />
+        android:text="shop"
+        android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/bag"
@@ -40,6 +42,7 @@
         android:layout_marginLeft="100dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/button_shape"
         android:text="bag" />
 
 
@@ -58,7 +61,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:layout_centerHorizontal="true"
-        android:text="Start"/>
+        android:text="Start"
+        android:background="@drawable/button_shape"/>
 
 
 </RelativeLayout>

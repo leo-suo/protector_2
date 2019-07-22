@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/star_sky">
 
 
     <Button
@@ -11,7 +12,8 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="0dp"
-        android:text="tower_1" />
+        android:text="tower_1"
+        android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/tower_2"
@@ -21,7 +23,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="TWR" />
+        android:text="tower_2"
+        android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/tower_3"
@@ -31,7 +34,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="tower_3" />
+        android:text="tower_3"
+        android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/tower_4"
@@ -41,7 +45,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="tower_4" />
+        android:text="tower_4"
+        android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/tower_5"
@@ -51,7 +56,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="tower_5" />
+        android:text="tower_5"
+        android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/tower_6"
@@ -61,7 +67,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="tower_6" />
+        android:text="tower_6"
+        android:background="@drawable/button_shape"/>
 
     <TextView
         android:id="@+id/Gold_text"
@@ -92,14 +99,5 @@
         android:layout_height="match_parent"
         android:layout_marginRight="0dp"
         android:layout_toLeftOf="@id/tower_1"
-        android:orientation="horizontal"></LinearLayout><![CDATA[
-
-    >
-
-
-
-
-
-
-]]>
+        android:orientation="horizontal"></LinearLayout>
 </RelativeLayout>
