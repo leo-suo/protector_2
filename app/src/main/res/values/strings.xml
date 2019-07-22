@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">protector_2</string>
 
+    <string name="facebook_app_id">906814512999466</string>
+    <string name="facebook_login_protocol_scheme">fb906814512999466</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="label_permissions">Please enable Microphone and Storage permissions.</string>

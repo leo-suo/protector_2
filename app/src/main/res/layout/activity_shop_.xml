@@ -108,6 +108,7 @@
                         android:id="@+id/t1_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower1" />
 
@@ -140,6 +141,7 @@
                         android:id="@+id/t2_img"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower2" />
 
@@ -170,8 +172,10 @@
 
                     <ImageButton
                         android:id="@+id/t3_img"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower3" />
 
@@ -202,10 +206,16 @@
 
                     <ImageButton
                         android:id="@+id/t4_img"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="false"
+                        android:cropToPadding="false"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/tower4" />
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/tower4"
+                        tools:visibility="visible" />
 
                     <TextView
                         android:id="@+id/t4_price"
@@ -234,8 +244,10 @@
 
                     <ImageButton
                         android:id="@+id/t5_img"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower5" />
 
@@ -271,8 +283,10 @@
 
                     <ImageButton
                         android:id="@+id/t6_img"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower6" />
 
@@ -303,8 +317,10 @@
 
                     <ImageButton
                         android:id="@+id/t7_img"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower7" />
 
@@ -335,8 +351,10 @@
 
                     <ImageButton
                         android:id="@+id/t8-_mg"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower8" />
 
@@ -367,8 +385,10 @@
 
                     <ImageButton
                         android:id="@+id/t9_img"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower9" />
 
@@ -399,8 +419,11 @@
 
                     <ImageButton
                         android:id="@+id/t10_img"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
                         app:srcCompat="@drawable/tower10" />
 
                     <TextView

@@ -54,6 +54,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower1" />
 
                 <TextView
@@ -111,6 +112,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower2" />
 
                 <TextView
@@ -168,6 +170,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower3" />
 
                 <TextView
@@ -225,6 +228,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower4" />
 
                 <TextView
@@ -282,6 +286,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower5" />
 
                 <TextView
@@ -339,6 +344,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower6" />
 
                 <TextView
@@ -396,6 +402,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower7" />
 
                 <TextView
@@ -453,6 +460,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower8" />
 
                 <TextView
@@ -510,6 +518,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower9" />
 
                 <TextView
@@ -567,6 +576,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tower10" />
 
                 <TextView

@@ -3,7 +3,10 @@ package com.example.protector_2;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ProviderInfo;
+import android.content.pm.Signature;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.media.MediaRecorder;
@@ -20,6 +23,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.SparseIntArray;
@@ -32,6 +36,15 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareVideo;
+import com.facebook.share.model.ShareVideoContent;
+import com.facebook.share.widget.ShareDialog;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,6 +52,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private static final int REQUEST_CODE = 1000;
+    private static final int REQUEST_VIDEO_CODE = 1001;
+    private static final int REQUEST_PASS_CODE = 1003;
     private int mScreenDensity;
     private MediaProjectionManager mProjectionManager;
     private static final int DISPLAY_WIDTH = 720;
@@ -77,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String videoUri = "";
-
+    Button btShareVideo;
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
 
 
 
@@ -88,7 +107,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.activity_main);
+
+        btShareVideo = findViewById(R.id.bt_share);
+        callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(this);
+
+        btShareVideo.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+            @Override
+            public void onClick(View v) {
+
+                shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+                    @Override
+                    public void onSuccess(Sharer.Result result) {
+                        Toast.makeText(MainActivity.this,"Share Success!",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(MainActivity.this,"Share Cancel!",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Toast.makeText(MainActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                Intent intent = new Intent();
+                intent.setType("video/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select video"),REQUEST_VIDEO_CODE);
+            }
+        });
 
         Gold_num = -1;
         readfile();
@@ -109,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("tower",tower_array);
                 intent.putExtra("fight",fight_array);
                 intent.putExtra("cost",cost_array);
-                startActivityForResult(intent,0);
+                startActivityForResult(intent,REQUEST_PASS_CODE);
 
             }
         });
@@ -125,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("tower",tower_array);
                 intent.putExtra("fight",fight_array);
                 intent.putExtra("cost",cost_array);
-                startActivityForResult(intent,0);
+                startActivityForResult(intent,REQUEST_PASS_CODE);
 
             }
         });
@@ -138,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                         shop_Activity.class);
                 intent.putExtra("Gold",Gold_num);
                 intent.putExtra("tower",tower_array);
-                startActivityForResult(intent,0);
+                startActivityForResult(intent,REQUEST_PASS_CODE);
 
             }
         });
@@ -195,6 +248,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void printKeyHash() {
+        try{
+            PackageInfo info = getPackageManager().getPackageInfo("com.example.protector_2",PackageManager.GET_SIGNATURES);
+            for(Signature signature: info.signatures){
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash", Base64.encodeToString(md.digest(),Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -226,14 +294,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestcode, int resultcode, Intent intent){
         super.onActivityResult(requestcode,resultcode,intent);
-        if (requestcode == REQUEST_CODE || resultcode != RESULT_OK) {
+        if (requestcode == REQUEST_CODE && resultcode == RESULT_OK) {
             mMediaProjectionCallback = new MediaProjectionCallback();
             mMediaProjection = mProjectionManager.getMediaProjection(resultcode, intent);
             mMediaProjection.registerCallback(mMediaProjectionCallback, null);
             mVirtualDisplay = createVirtualDisplay();
             mMediaRecorder.start();
-        }else{
-            Gold_num = intent.getIntExtra("Gold",-1);
+        }else if(requestcode == REQUEST_VIDEO_CODE && resultcode == RESULT_OK){
+            Uri selectedVideo = intent.getData();
+            ShareVideo shareVideo = new ShareVideo.Builder().setLocalUrl(selectedVideo).build();
+            ShareVideoContent shareVideoContent = new ShareVideoContent.Builder().setContentTitle("Protector").setContentDescription("Second test").setVideo(shareVideo).build();
+            if(shareDialog.canShow(ShareVideoContent.class)){
+                shareDialog.show(shareVideoContent);
+            }
+        }else if (requestcode == REQUEST_PASS_CODE && resultcode == RESULT_OK){
+            Gold_num = intent.getIntExtra("Gold",-8);
             tower_array = intent.getIntArrayExtra("tower");
             fight_array = intent.getIntArrayExtra("fight");
             cost_array = intent.getIntArrayExtra("cost");
@@ -281,7 +356,11 @@ public class MainActivity extends AppCompatActivity {
             initRecorder();
             shareScreen();
         } else {
-            mMediaRecorder.stop();
+            try{
+                mMediaRecorder.stop();
+            } catch (IllegalStateException e){
+                e.printStackTrace();
+            }
             mMediaRecorder.reset();
             Log.v(TAG, "Stopping Recording");
             stopScreenSharing();
