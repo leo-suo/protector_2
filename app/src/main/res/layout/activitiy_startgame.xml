@@ -11,7 +11,7 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="0dp"
-        android:text="tower_1" />
+        android:text="1" />
 
     <Button
         android:id="@+id/tower_2"
@@ -21,7 +21,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="TWR" />
+        android:text="2" />
 
     <Button
         android:id="@+id/tower_3"
@@ -31,7 +31,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="tower_3" />
+        android:text="3" />
 
     <Button
         android:id="@+id/tower_4"
@@ -41,7 +41,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="tower_4" />
+        android:text="4" />
 
     <Button
         android:id="@+id/tower_5"
@@ -51,7 +51,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="tower_5" />
+        android:text="5" />
 
     <Button
         android:id="@+id/tower_6"
@@ -61,7 +61,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="0dp"
-        android:text="tower_6" />
+        android:text="6" />
 
     <TextView
         android:id="@+id/Gold_text"

@@ -143,13 +143,13 @@ public class GameView extends View{
             }
         }
 
-        number_of_yasuo = map_info.charAt(78) - '0';
+        number_of_yasuo = (map_info.charAt(78) - '0')*10 +(map_info.charAt(79) - '0');
 
         // create yasuo class
         yasuo_array = new Enemy[number_of_yasuo];
 
         for(int i = 0; i < number_of_yasuo; ++i){
-            int start_num = 78 + i * 5;
+            int start_num = 79 + i * 5;
 
             // Concrete Class
             if(map_info.charAt(start_num + 1) == '7'){
