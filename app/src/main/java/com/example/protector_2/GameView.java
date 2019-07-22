@@ -33,6 +33,12 @@ public class GameView extends View{
     public static int total_hp = 5000;
 
     public static int cost = 100;
+
+    // What tower we have
+    public String[] index;
+    public int total_tower_but = 0;
+
+
     // enemy
     public Enemy yasuo_array[];
 
@@ -78,6 +84,47 @@ public class GameView extends View{
     public GameView(Context context){
 
         super(context);
+
+
+        index = new String[6];
+        for(int i = 0; i < 10; i++){
+            if(StartGame.fight_array[i] == 1){
+
+
+                if(i == 0){
+                    index[total_tower_but] = "wukong";
+                }else if(i == 1){
+                    index[total_tower_but] = "mord";
+                }else if(i == 2){
+                    index[total_tower_but] = "diana";
+                }else if(i == 3){
+                    index[total_tower_but] = "wang";
+                }else if(i == 4){
+                    index[total_tower_but] = "hao";
+                }else if(i == 5){
+                    index[total_tower_but] = "garren";
+                }else if(i == 6){
+                    index[total_tower_but] = "tynda";
+                }else if(i == 7){
+                    index[total_tower_but] = "karthus";
+                }else if(i == 8){
+                    index[total_tower_but] = "kassdin";
+                }else{
+                    index[total_tower_but] = "tang";
+                }
+                ++total_tower_but;
+            }
+        }
+
+        if(total_tower_but != 6){
+            while(total_tower_but < 6){
+                index[total_tower_but] = "NULL";
+                total_tower_but++;
+            }
+        }
+
+
+
 
         this.sg = (StartGame) context;
         this.context = context;
@@ -308,56 +355,462 @@ public class GameView extends View{
             for(int j = 0; j < worldHeight; j++){
                 for (int i = 0; i < worldWidth; i++){
                     if(block[j][i].in_the_block(f_x, f_y)){
-                        if (StartGame.mouse == 1 && block[j][i].kind == 0){
-                            if(cost - Tower_Garen.cost >= 0){
-                                cost  = cost - Tower_Garen.cost;
-                                Tower_Garen new_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
-                                tower[number_of_tower] = new_t;
-                                number_of_tower++;
+                        if (StartGame.mouse == 1){
+                            if(index[0] == "wukong"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[0] >= 0){
+                                    cost = cost - StartGame.cost_array[0];
+                                    Tower_Wukong n_t = new Tower_Wukong(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[0] == "mord"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[1] >= 0){
+                                    cost = cost - StartGame.cost_array[1];
+                                    Tower_Mord n_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[0] == "diana"  && block[j][i].kind == 1){
+                                if(cost - StartGame.cost_array[2] >= 0){
+                                    cost = cost - StartGame.cost_array[2];
+                                    Tower_Diana n_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                    block[j][i].have_tower = 1;
+                                    block[j][i].block_tower = n_t;
+                                }
+                            }else if(index[0] == "wang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[3] >= 0){
+                                    cost = cost - StartGame.cost_array[3];
+                                    Tower_Wang n_t = new Tower_Wang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[0] == "hao"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[4] >= 0){
+                                    cost = cost - StartGame.cost_array[4];
+                                    Tower_Hao n_t = new Tower_Hao(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[0] == "garren"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[5] >= 0){
+                                    cost = cost - StartGame.cost_array[5];
+                                    Tower_Garen n_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[0] == "tynda"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[6] >= 0){
+                                    cost = cost - StartGame.cost_array[6];
+                                    Tower_Tryndamere n_t = new Tower_Tryndamere(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[0] == "karthus"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[7] >= 0){
+                                    cost = cost - StartGame.cost_array[7];
+                                    Tower_Karthus n_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[0] == "kassdin"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[8] >= 0){
+                                    cost = cost - StartGame.cost_array[8];
+                                    Tower_Kassadin n_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[0] == "tang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[9] >= 0){
+                                    cost = cost - StartGame.cost_array[9];
+                                    Tower_Tang n_t = new Tower_Tang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
                             }
+
                         }
-                        if (StartGame.mouse == 2 && block[j][i].kind == 1){
+                        if (StartGame.mouse == 2){
                             // This tower can only put in the tower
-                            if(cost - Tower_Diana.cost >= 0) {
-                                cost = cost - Tower_Diana.cost;
-                                Tower_Diana new_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
-                                tower[number_of_tower] = new_t;
-                                number_of_tower++;
-                                block[j][i].have_tower = 1;
-                                block[j][i].block_tower = new_t;
+
+                            if(index[1] == "wukong"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[0] >= 0){
+                                    cost = cost - StartGame.cost_array[0];
+                                    Tower_Wukong n_t = new Tower_Wukong(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[1] == "mord"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[1] >= 0){
+                                    cost = cost - StartGame.cost_array[1];
+                                    Tower_Mord n_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[1] == "diana"  && block[j][i].kind == 1){
+                                if(cost - StartGame.cost_array[2] >= 0){
+                                    cost = cost - StartGame.cost_array[2];
+                                    Tower_Diana n_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                    block[j][i].have_tower = 1;
+                                    block[j][i].block_tower = n_t;
+                                }
+                            }else if(index[1] == "wang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[3] >= 0){
+                                    cost = cost - StartGame.cost_array[3];
+                                    Tower_Wang n_t = new Tower_Wang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[1] == "hao"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[4] >= 0){
+                                    cost = cost - StartGame.cost_array[4];
+                                    Tower_Hao n_t = new Tower_Hao(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[1] == "garren"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[5] >= 0){
+                                    cost = cost - StartGame.cost_array[5];
+                                    Tower_Garen n_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[1] == "tynda"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[6] >= 0){
+                                    cost = cost - StartGame.cost_array[6];
+                                    Tower_Tryndamere n_t = new Tower_Tryndamere(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[1] == "karthus"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[7] >= 0){
+                                    cost = cost - StartGame.cost_array[7];
+                                    Tower_Karthus n_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[1] == "kassdin"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[8] >= 0){
+                                    cost = cost - StartGame.cost_array[8];
+                                    Tower_Kassadin n_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[1] == "tang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[9] >= 0){
+                                    cost = cost - StartGame.cost_array[9];
+                                    Tower_Tang n_t = new Tower_Tang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
                             }
                         }
-                        if (StartGame.mouse == 3 && block[j][i].kind == 0){
-                            if(cost - Tower_Karthus.cost >= 0) {
-                                cost = cost - Tower_Karthus.cost;
-                                Tower_Karthus new_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
-                                tower[number_of_tower] = new_t;
-                                number_of_tower++;
+                        if (StartGame.mouse == 3){
+                            if(index[2] == "wukong"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[0] >= 0){
+                                    cost = cost - StartGame.cost_array[0];
+                                    Tower_Wukong n_t = new Tower_Wukong(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[2] == "mord"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[1] >= 0){
+                                    cost = cost - StartGame.cost_array[1];
+                                    Tower_Mord n_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[2] == "diana"  && block[j][i].kind == 1){
+                                if(cost - StartGame.cost_array[2] >= 0){
+                                    cost = cost - StartGame.cost_array[2];
+                                    Tower_Diana n_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                    block[j][i].have_tower = 1;
+                                    block[j][i].block_tower = n_t;
+                                }
+                            }else if(index[2] == "wang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[3] >= 0){
+                                    cost = cost - StartGame.cost_array[3];
+                                    Tower_Wang n_t = new Tower_Wang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[2] == "hao"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[4] >= 0){
+                                    cost = cost - StartGame.cost_array[4];
+                                    Tower_Hao n_t = new Tower_Hao(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[2] == "garren"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[5] >= 0){
+                                    cost = cost - StartGame.cost_array[5];
+                                    Tower_Garen n_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[2] == "tynda"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[6] >= 0){
+                                    cost = cost - StartGame.cost_array[6];
+                                    Tower_Tryndamere n_t = new Tower_Tryndamere(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[2] == "karthus"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[7] >= 0){
+                                    cost = cost - StartGame.cost_array[7];
+                                    Tower_Karthus n_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[2] == "kassdin"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[8] >= 0){
+                                    cost = cost - StartGame.cost_array[8];
+                                    Tower_Kassadin n_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[2] == "tang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[9] >= 0){
+                                    cost = cost - StartGame.cost_array[9];
+                                    Tower_Tang n_t = new Tower_Tang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
                             }
+
                         }
-                        if (StartGame.mouse == 4 && block[j][i].kind == 0){
-                            if(cost - Tower_Mord.cost >= 0) {
-                                cost = cost - Tower_Mord.cost;
-                                Tower_Mord new_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
-                                tower[number_of_tower] = new_t;
-                                number_of_tower++;
+                        if (StartGame.mouse == 4){
+                            if(index[3] == "wukong"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[0] >= 0){
+                                    cost = cost - StartGame.cost_array[0];
+                                    Tower_Wukong n_t = new Tower_Wukong(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[3] == "mord"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[1] >= 0){
+                                    cost = cost - StartGame.cost_array[1];
+                                    Tower_Mord n_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[3] == "diana"  && block[j][i].kind == 1){
+                                if(cost - StartGame.cost_array[2] >= 0){
+                                    cost = cost - StartGame.cost_array[2];
+                                    Tower_Diana n_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                    block[j][i].have_tower = 1;
+                                    block[j][i].block_tower = n_t;
+                                }
+                            }else if(index[3] == "wang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[3] >= 0){
+                                    cost = cost - StartGame.cost_array[3];
+                                    Tower_Wang n_t = new Tower_Wang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[3] == "hao"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[4] >= 0){
+                                    cost = cost - StartGame.cost_array[4];
+                                    Tower_Hao n_t = new Tower_Hao(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[3] == "garren"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[5] >= 0){
+                                    cost = cost - StartGame.cost_array[5];
+                                    Tower_Garen n_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[3] == "tynda"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[6] >= 0){
+                                    cost = cost - StartGame.cost_array[6];
+                                    Tower_Tryndamere n_t = new Tower_Tryndamere(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[3] == "karthus"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[7] >= 0){
+                                    cost = cost - StartGame.cost_array[7];
+                                    Tower_Karthus n_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[3] == "kassdin"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[8] >= 0){
+                                    cost = cost - StartGame.cost_array[8];
+                                    Tower_Kassadin n_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[3] == "tang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[9] >= 0){
+                                    cost = cost - StartGame.cost_array[9];
+                                    Tower_Tang n_t = new Tower_Tang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
                             }
+
                         }
-                        if (StartGame.mouse == 5 && block[j][i].kind == 0){
-                            if(cost - Tower_Kassadin.cost >= 0) {
-                                cost = cost - Tower_Kassadin.cost;
-                                Tower_Kassadin new_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
-                                tower[number_of_tower] = new_t;
-                                number_of_tower++;
+                        if (StartGame.mouse == 5){
+                            if(index[4] == "wukong"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[0] >= 0){
+                                    cost = cost - StartGame.cost_array[0];
+                                    Tower_Wukong n_t = new Tower_Wukong(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[4] == "mord"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[1] >= 0){
+                                    cost = cost - StartGame.cost_array[1];
+                                    Tower_Mord n_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[4] == "diana"  && block[j][i].kind == 1){
+                                if(cost - StartGame.cost_array[2] >= 0){
+                                    cost = cost - StartGame.cost_array[2];
+                                    Tower_Diana n_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                    block[j][i].have_tower = 1;
+                                    block[j][i].block_tower = n_t;
+                                }
+                            }else if(index[4] == "wang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[3] >= 0){
+                                    cost = cost - StartGame.cost_array[3];
+                                    Tower_Wang n_t = new Tower_Wang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[4] == "hao"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[4] >= 0){
+                                    cost = cost - StartGame.cost_array[4];
+                                    Tower_Hao n_t = new Tower_Hao(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[4] == "garren"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[5] >= 0){
+                                    cost = cost - StartGame.cost_array[5];
+                                    Tower_Garen n_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[4] == "tynda"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[6] >= 0){
+                                    cost = cost - StartGame.cost_array[6];
+                                    Tower_Tryndamere n_t = new Tower_Tryndamere(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[4] == "karthus"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[7] >= 0){
+                                    cost = cost - StartGame.cost_array[7];
+                                    Tower_Karthus n_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[4] == "kassdin"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[8] >= 0){
+                                    cost = cost - StartGame.cost_array[8];
+                                    Tower_Kassadin n_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[4] == "tang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[9] >= 0){
+                                    cost = cost - StartGame.cost_array[9];
+                                    Tower_Tang n_t = new Tower_Tang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
                             }
+
                         }
-                        if (StartGame.mouse == 6 && block[j][i].kind == 0){
-                            if(cost - Tower_Tryndamere.cost >= 0) {
-                                cost = cost - Tower_Tryndamere.cost;
-                                Tower_Tryndamere new_t = new Tower_Tryndamere(context, block, block[j][i].x, block[j][i].y);
-                                tower[number_of_tower] = new_t;
-                                number_of_tower++;
+                        if (StartGame.mouse == 6 ){
+                            if(index[5] == "wukong"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[0] >= 0){
+                                    cost = cost - StartGame.cost_array[0];
+                                    Tower_Wukong n_t = new Tower_Wukong(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[5] == "mord"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[1] >= 0){
+                                    cost = cost - StartGame.cost_array[1];
+                                    Tower_Mord n_t = new Tower_Mord(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[5] == "diana"  && block[j][i].kind == 1){
+                                if(cost - StartGame.cost_array[2] >= 0){
+                                    cost = cost - StartGame.cost_array[2];
+                                    Tower_Diana n_t = new Tower_Diana(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                    block[j][i].have_tower = 1;
+                                    block[j][i].block_tower = n_t;
+                                }
+                            }else if(index[5] == "wang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[3] >= 0){
+                                    cost = cost - StartGame.cost_array[3];
+                                    Tower_Wang n_t = new Tower_Wang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[5] == "hao"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[4] >= 0){
+                                    cost = cost - StartGame.cost_array[4];
+                                    Tower_Hao n_t = new Tower_Hao(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[5] == "garren"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[5] >= 0){
+                                    cost = cost - StartGame.cost_array[5];
+                                    Tower_Garen n_t = new Tower_Garen(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[5] == "tynda"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[6] >= 0){
+                                    cost = cost - StartGame.cost_array[6];
+                                    Tower_Tryndamere n_t = new Tower_Tryndamere(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[5] == "karthus"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[7] >= 0){
+                                    cost = cost - StartGame.cost_array[7];
+                                    Tower_Karthus n_t = new Tower_Karthus(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[5] == "kassdin"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[8] >= 0){
+                                    cost = cost - StartGame.cost_array[8];
+                                    Tower_Kassadin n_t = new Tower_Kassadin(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
+                            }else if(index[5] == "tang"  && block[j][i].kind == 0){
+                                if(cost - StartGame.cost_array[9] >= 0){
+                                    cost = cost - StartGame.cost_array[9];
+                                    Tower_Tang n_t = new Tower_Tang(context, block, block[j][i].x, block[j][i].y);
+                                    tower[number_of_tower] = n_t;
+                                    number_of_tower++;
+                                }
                             }
+
                         }
                     }
                 }
