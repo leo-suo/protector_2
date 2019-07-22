@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">protector_2</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="label_permissions">Please enable Microphone and Storage permissions.</string>
 </resources>

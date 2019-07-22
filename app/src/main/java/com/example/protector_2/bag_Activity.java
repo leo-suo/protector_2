@@ -227,10 +227,8 @@ public class bag_Activity extends AppCompatActivity {
                     show(tower_owns);
                 } else
                 {
-                    Context context = getApplicationContext();
-                    CharSequence text ="You do not have the tower right now!";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(context,text,duration).show();
+                    ImageView tower = findViewById(tower_id[i]);
+                    tower.setColorFilter(null);
                 }
 
             }
